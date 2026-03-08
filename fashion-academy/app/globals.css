@@ -1,14 +1,6 @@
 @import "tailwindcss";
 
 :root {
-  /* Brand color system */
-  --color-noir: #0a0a0a;
-  --color-ivory: #f5f0e8;
-  --color-gold: #c9a84c;
-  --color-gold-light: #e8d5a3;
-  --color-charcoal: #1a1a1a;
-  --color-muted: #6b6b6b;
-
   /* Typography */
   --font-display: var(--font-display-serif);
   --font-body: var(--font-body-sans);
@@ -36,6 +28,31 @@
   /* Shadows */
   --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.25);
   --shadow-subtle: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+:root[data-theme="dark"],
+:root:not([data-theme]) {
+  color-scheme: dark;
+
+  /* Brand color system – dark mode */
+  --color-noir: #0a0a0a;
+  --color-ivory: #f5f0e8;
+  --color-gold: #c9a84c;
+  --color-gold-light: #e8d5a3;
+  --color-charcoal: #1a1a1a;
+  --color-muted: #6b6b6b;
+}
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  /* Brand color system – light mode */
+  --color-noir: #f5f0e8;
+  --color-ivory: #141414;
+  --color-gold: #c9a84c;
+  --color-gold-light: #b69539;
+  --color-charcoal: #e4d7c7;
+  --color-muted: #6b6b6b;
 }
 
 @theme inline {

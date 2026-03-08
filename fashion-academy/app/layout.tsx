@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import "./globals.css";
 import SmoothScrollProvider from "@/components/layout/SmoothScrollProvider";
+import { ThemeProvider } from "@/components/layout/ThemeProvider";
 
 const displaySerif = Cormorant_Garamond({
   subsets: ["latin"],
@@ -51,7 +52,9 @@ export default function RootLayout({
         <a href="#main" className="skip-to-content">
           Skip to main content
         </a>
-        <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        <ThemeProvider>
+          <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

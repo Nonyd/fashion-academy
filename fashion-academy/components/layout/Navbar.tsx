@@ -3,6 +3,8 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Globe } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
+import { useTheme } from "./ThemeProvider";
 
 const NAV_ITEMS = [
   { href: "#programs", label: "Programs" },
@@ -23,6 +25,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const [activeLang, setActiveLang] = useState("EN");
+  const { theme } = useTheme();
 
   useEffect(() => {
     const onScroll = () => {
@@ -46,11 +49,15 @@ export default function Navbar() {
       <motion.nav
         initial={{ backgroundColor: "rgba(10,10,10,0)", backdropFilter: "blur(0px)" }}
         animate={{
-          backgroundColor: isScrolled ? "rgba(10,10,10,0.95)" : "rgba(10,10,10,0)",
+          backgroundColor: isScrolled
+            ? theme === "light"
+              ? "rgba(245,240,232,0.96)"
+              : "rgba(10,10,10,0.95)"
+            : "rgba(10,10,10,0)",
           backdropFilter: isScrolled ? "blur(18px)" : "blur(0px)",
         }}
         transition={{ duration: 0.3, ease: "easeOut" }}
-        className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4 lg:px-10"
+        className="flex w-full items-center justify-between px-6 py-4 lg:px-10"
         aria-label="Main navigation"
       >
         <a href="#hero" className="flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)]">
@@ -122,6 +129,7 @@ export default function Navbar() {
                 )}
               </AnimatePresence>
             </div>
+            <ThemeToggle />
             <a
               href="/auth/login"
               className="rounded-full border border-white/25 px-5 py-2 text-xs font-medium uppercase tracking-[0.28em] text-[var(--color-ivory)] transition-colors hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold-light)]"
@@ -138,6 +146,7 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-2 md:hidden">
+          <ThemeToggle />
           <button
             type="button"
             onClick={() => setLangOpen((prev) => !prev)}
