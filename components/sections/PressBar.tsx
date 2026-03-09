@@ -22,14 +22,14 @@ export default function PressBar() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.6 }}
               transition={{ duration: 0.4 }}
-              className="relative h-6 w-24 grayscale opacity-60 transition hover:grayscale-0 hover:opacity-100"
+              className="group relative h-6 w-24 opacity-70 transition hover:opacity-100"
             >
               <Image
                 src={logo.imageUrl}
                 alt={logo.name}
                 fill
                 sizes="96px"
-                className="object-contain"
+                className="object-contain grayscale brightness-0 invert contrast-90 transition group-hover:grayscale-0 group-hover:brightness-100 group-hover:invert-0 group-hover:contrast-100"
               />
             </motion.div>
           ))}

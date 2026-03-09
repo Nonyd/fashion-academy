@@ -244,29 +244,28 @@ export const pressLogos: PressLogo[] = [
     id: "vogue",
     name: "Vogue",
     imageUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/0/0c/Vogue_logo.svg",
+      "https://upload.wikimedia.org/wikipedia/commons/f/f8/VOGUE_LOGO.svg",
   },
   {
     id: "wwd",
     name: "WWD",
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/5/5b/WWD_logo.svg",
+    imageUrl:
+      "https://upload.wikimedia.org/wikipedia/commons/5/56/Women%27s_Wear_Daily_logo.svg",
   },
   {
     id: "bof",
     name: "Business of Fashion",
-    imageUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/e/e8/The_Business_of_Fashion_logo.png",
+    imageUrl: "https://logo.clearbit.com/businessoffashion.com",
   },
   {
     id: "elle",
     name: "Elle",
-    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/4/44/ELLE_logo.svg",
+    imageUrl: "https://static.cdnlogo.com/logos/e/30/elle.svg",
   },
   {
     id: "harpers",
     name: "Harper's Bazaar",
-    imageUrl:
-      "https://upload.wikimedia.org/wikipedia/commons/2/2d/Harper%27s_BAZAAR_logo.svg",
+    imageUrl: "https://static.cdnlogo.com/logos/h/38/harpers-bazaar.svg",
   },
 ];
 
