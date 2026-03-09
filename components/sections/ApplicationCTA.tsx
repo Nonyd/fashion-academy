@@ -10,7 +10,7 @@ type TimeLeft = {
   seconds: number;
 };
 
-const DEADLINE = new Date("2025-08-01T23:59:59Z").getTime();
+const DEADLINE = new Date("2026-08-01T23:59:59Z").getTime();
 
 function calculateTimeLeft(): TimeLeft {
   const now = Date.now();
@@ -62,7 +62,7 @@ export default function ApplicationCTA() {
             Your Journey Starts Here
           </h2>
           <p className="max-w-md text-sm text-[var(--color-noir)]/80">
-            Applications for the 2025 intake are now open. Join a global cohort
+            Applications for the 2026 intake are now open. Join a global cohort
             of designers, strategists, and image makers ready to redefine
             fashion&apos;s future.
           </p>

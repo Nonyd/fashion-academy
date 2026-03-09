@@ -33,7 +33,7 @@ export default function PageIntro() {
             </span>
             <div className="h-px w-32 bg-gradient-to-r from-transparent via-[var(--color-gold)] to-transparent" />
             <p className="text-[11px] uppercase tracking-[0.24em] text-[var(--color-ivory)]/70">
-              Where Vision Becomes Fashion.
+              The Bedrock For Nurturing Global Fashion Creatives.
             </p>
           </motion.div>
         </motion.div>

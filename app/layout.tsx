@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Prudential Fashion Academy",
     description:
-      "Where Vision Becomes Fashion.",
+      "The Bedrock For Nurturing Global Fashion Creatives.",
     siteName: "Prudential Fashion Academy",
     url: "https://prudentialfashionacademy.com",
     type: "website",

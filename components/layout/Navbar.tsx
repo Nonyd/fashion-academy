@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
+import Link from "next/link";
 import { Menu, X, Globe } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import { useTheme } from "./ThemeProvider";
@@ -12,6 +14,7 @@ const NAV_ITEMS = [
   { href: "#admissions", label: "Admissions" },
   { href: "#showcase", label: "Showcase" },
   { href: "#events", label: "Events" },
+  { href: "/alumni", label: "Alumni" },
 ];
 
 const LANGUAGES = [
@@ -60,17 +63,18 @@ export default function Navbar() {
         className="flex w-full items-center justify-between px-6 py-4 lg:px-10"
         aria-label="Main navigation"
       >
-        <a href="#hero" className="flex items-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)]">
-          <div className="h-8 w-8 rounded-full border border-[rgba(201,168,76,0.5)]" />
-          <div className="flex flex-col leading-tight">
-            <span className="text-xs font-medium tracking-[0.26em] text-[var(--color-gold)]">
-              PRUDENTIAL FASHION ACADEMY
-            </span>
-            <span className="text-sm text-[var(--color-ivory)]/80">
-              Where Vision Becomes Fashion.
-            </span>
-          </div>
-        </a>
+        <Link href="/" className="flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)]" aria-label="Prudential Fashion Academy – Home">
+          <Image
+            src="/logo.png"
+            alt="Prudential Fashion Academy"
+            width={56}
+            height={56}
+            className={`h-12 w-12 shrink-0 object-contain sm:h-14 sm:w-14 ${theme === "light" ? "" : "invert"}`}
+          />
+          <span className="hidden text-[10px] leading-tight text-[var(--color-ivory)]/80 sm:block sm:max-w-[10rem] lg:max-w-[12rem]">
+            The Bedrock For Nurturing Global Fashion Creatives.
+          </span>
+        </Link>
 
         <div className="hidden items-center gap-10 md:flex">
           <div className="flex items-center gap-8 text-xs font-medium tracking-[0.22em] text-[var(--color-ivory)]/70">
@@ -134,7 +138,7 @@ export default function Navbar() {
               href="/auth/login"
               className="rounded-full border border-white/25 px-5 py-2 text-xs font-medium uppercase tracking-[0.28em] text-[var(--color-ivory)] transition-colors hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold-light)]"
             >
-              Student Login
+              Login
             </a>
             <a
               href="/admissions"
@@ -219,10 +223,10 @@ export default function Navbar() {
                   onClick={() => setMenuOpen(false)}
                   className="block w-full rounded-full border border-white/25 bg-transparent px-6 py-3 text-center text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-ivory)]"
                 >
-                  Student Login
+                  Login
                 </a>
                 <p className="text-xs text-[var(--color-muted)]">
-                  Est. 20XX · Milan · New York · Lagos
+                  Lagos · Abuja · Online Studio
                 </p>
               </div>
             </div>

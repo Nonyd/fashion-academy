@@ -76,7 +76,7 @@ export default function HeroSection() {
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 pt-28 pb-24 lg:flex-row lg:items-end lg:gap-20 lg:px-10">
         <div className="max-w-xl space-y-8">
           <p className="text-[10px] font-medium uppercase tracking-[0.35em] text-[var(--color-gold)]">
-            Est. 20XX · Milan · New York · Lagos
+            Lagos · Abuja
           </p>
           <h1
             id="hero-heading"
@@ -143,15 +143,15 @@ export default function HeroSection() {
         >
           <div className="space-y-3">
             <p className="text-[10px] uppercase tracking-[0.3em] text-[var(--color-muted)]">
-              Immersive campuses
+              Campuses
             </p>
-            <p>Milan · New York · Lagos · Online Studio</p>
+            <p>Lagos · Abuja</p>
           </div>
           <div className="space-y-2">
             <p className="text-[10px] uppercase tracking-[0.3em] text-[var(--color-muted)]">
               Next intake
             </p>
-            <p>Applications for the 2025 cohort are now open.</p>
+            <p>Applications for the 2026 cohort are now open.</p>
           </div>
         </motion.div>
       </div>

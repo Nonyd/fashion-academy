@@ -1,19 +1,25 @@
+import Image from "next/image";
+import Link from "next/link";
 import { Instagram, Linkedin, Music2 } from "lucide-react";
 
 export default function Footer() {
   return (
     <footer className="border-t border-[var(--color-charcoal)] bg-[var(--color-noir)] px-6 pb-6 pt-16 lg:px-10 lg:pt-20">
       <div className="mx-auto max-w-6xl">
-        <div className="grid gap-10 text-sm text-[var(--color-ivory)]/75 md:grid-cols-4">
+        <div className="grid gap-10 text-sm text-[var(--color-ivory)]/75 md:grid-cols-2 lg:grid-cols-5">
           <div className="space-y-4">
-            <div>
-              <p className="text-xs font-medium tracking-[0.3em] text-[var(--color-gold)]">
-                PRUDENTIAL FASHION ACADEMY
-              </p>
-              <p className="mt-2 text-xs text-[var(--color-ivory)]/70">
-                Where Vision Becomes Fashion.
-              </p>
-            </div>
+            <Link href="/" className="inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)]" aria-label="Prudential Fashion Academy – Home">
+              <Image
+                src="/logo.png"
+                alt="Prudential Fashion Academy"
+                width={120}
+                height={48}
+                className="h-10 w-auto object-contain object-left invert"
+              />
+            </Link>
+            <p className="text-[10px] text-[var(--color-ivory)]/70">
+              The Bedrock For Nurturing Global Fashion Creatives.
+            </p>
             <p className="text-xs text-[var(--color-ivory)]/60">
               A global school for fashion&apos;s next storytellers, strategists, and
               image makers.
@@ -89,6 +95,26 @@ export default function Footer() {
                   Press & Careers
                 </a>
               </li>
+              <li>
+                <a href="/alumni" className="hover:text-[var(--color-ivory)]">
+                  Alumni
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-xs font-medium uppercase tracking-[0.26em] text-[var(--color-muted)]">
+              Campuses
+            </h3>
+            <ul className="mt-3 space-y-2 text-xs text-[var(--color-ivory)]/70">
+              <li>
+                <span className="font-medium text-[var(--color-ivory)]">Lagos</span>
+                <span className="text-[var(--color-muted)]"> — Egbeda, Ajah, Ojodu</span>
+              </li>
+              <li>
+                <span className="font-medium text-[var(--color-ivory)]">Abuja</span>
+              </li>
             </ul>
           </div>
 
@@ -96,11 +122,6 @@ export default function Footer() {
             <h3 className="text-xs font-medium uppercase tracking-[0.26em] text-[var(--color-muted)]">
               Contact
             </h3>
-            <p className="text-xs text-[var(--color-ivory)]/70">
-              12 Couture Boulevard, Victoria Island,
-              <br />
-              Lagos, Nigeria
-            </p>
             <p className="text-xs text-[var(--color-ivory)]/70">
               admissions@prudentialfashionacademy.com
               <br />
