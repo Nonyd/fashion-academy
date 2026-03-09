@@ -9,11 +9,12 @@ import ThemeToggle from "./ThemeToggle";
 import { useTheme } from "./ThemeProvider";
 
 const NAV_ITEMS = [
-  { href: "#programs", label: "Programs" },
-  { href: "#faculty", label: "Faculty" },
-  { href: "#admissions", label: "Admissions" },
-  { href: "#showcase", label: "Showcase" },
-  { href: "#events", label: "Events" },
+  { href: "/programs", label: "Programs" },
+  { href: "/faculty", label: "Faculty" },
+  { href: "/admissions", label: "Admissions" },
+  { href: "/about", label: "About" },
+  { href: "/events", label: "Events" },
+  { href: "/contact", label: "Contact" },
   { href: "/alumni", label: "Alumni" },
 ];
 
