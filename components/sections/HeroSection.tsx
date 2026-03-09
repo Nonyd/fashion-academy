@@ -76,7 +76,7 @@ export default function HeroSection() {
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col gap-10 px-6 pt-28 pb-24 lg:flex-row lg:items-end lg:gap-20 lg:px-10">
         <div className="max-w-xl space-y-8">
           <p className="text-[10px] font-medium uppercase tracking-[0.35em] text-[var(--color-gold)]">
-            Lagos · Abuja
+            Est. 2020 · Lagos · Abuja
           </p>
           <h1
             id="hero-heading"

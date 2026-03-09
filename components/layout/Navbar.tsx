@@ -226,7 +226,7 @@ export default function Navbar() {
                   Login
                 </a>
                 <p className="text-xs text-[var(--color-muted)]">
-                  Lagos · Abuja · Online Studio
+                  Est. 2020 · Lagos · Abuja
                 </p>
               </div>
             </div>

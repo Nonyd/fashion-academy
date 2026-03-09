@@ -153,7 +153,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 flex flex-col gap-3 border-t border-[var(--color-charcoal)] pt-4 text-[11px] text-[var(--color-muted)] md:flex-row md:items-center md:justify-between">
-          <p>© 2025 Prudential Fashion Academy. All rights reserved.</p>
+          <p>© 2025 Prudential Fashion Academy. Est. 2020. All rights reserved.</p>
           <div className="flex flex-wrap items-center gap-4">
             <a href="#" className="hover:text-[var(--color-ivory)]">
               Privacy Policy

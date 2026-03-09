@@ -112,12 +112,11 @@ export const programs: Program[] = [
 
 export const faculty: Faculty[] = [
   {
-    id: "elena-rossi",
-    name: "Elena Rossi",
-    title: "Chair of Fashion Design",
-    formerBrand: "Former Creative Director, Valentino",
-    imageUrl:
-      "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=800&q=80",
+    id: "prudent-gabriel-peterson",
+    name: "Prudent Gabriel Peterson",
+    title: "CEO / Founder",
+    formerBrand: "Prudential Fashion Academy",
+    imageUrl: "/faculty-prudent-gabriel-peterson.png",
   },
   {
     id: "marcus-adeoye",
