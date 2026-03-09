@@ -52,15 +52,15 @@ export default function ProgramsShowcase() {
     >
       <div className="mx-auto flex max-w-6xl flex-col gap-8 lg:flex-row lg:items-end lg:gap-16">
         <div className="max-w-xl space-y-4">
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.4 }}
             transition={{ duration: 0.5 }}
-            className="text-[10px] font-medium uppercase tracking-[0.3em] text-[var(--color-gold)]"
           >
-            Programs
-          </motion.p>
+            <p className="section-label">Programs</p>
+            <span className="section-title-accent" aria-hidden="true" />
+          </motion.div>
           <motion.h2
             id="programs-title"
             initial={{ opacity: 0, y: 24 }}

@@ -20,9 +20,8 @@ export default function FacultySpotlight() {
           className="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between"
         >
           <div>
-            <p className="text-[10px] font-medium uppercase tracking-[0.3em] text-[var(--color-gold)]">
-              Faculty
-            </p>
+            <p className="section-label">Faculty</p>
+            <span className="section-title-accent" aria-hidden="true" />
             <h2
               id="faculty-title"
               className="mt-2 text-3xl leading-[1.1] text-[var(--color-ivory)] sm:text-4xl"

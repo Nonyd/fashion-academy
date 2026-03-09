@@ -175,7 +175,11 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 bg-[rgba(4,4,4,0.96)] backdrop-blur-md md:hidden"
+            className={`fixed inset-0 z-40 backdrop-blur-md md:hidden ${
+              theme === "light"
+                ? "bg-[rgba(245,240,232,0.96)]"
+                : "bg-[rgba(4,4,4,0.96)]"
+            }`}
           >
             <div className="flex h-full flex-col justify-between px-8 pb-10 pt-24">
               <motion.div

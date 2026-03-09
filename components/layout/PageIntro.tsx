@@ -29,11 +29,11 @@ export default function PageIntro() {
             className="flex flex-col items-center gap-4"
           >
             <span className="text-xs font-medium tracking-[0.32em] text-[var(--color-gold)]">
-              ÉCOLE ATELIER
+              PRUDENTIAL FASHION ACADEMY
             </span>
             <div className="h-px w-32 bg-gradient-to-r from-transparent via-[var(--color-gold)] to-transparent" />
             <p className="text-[11px] uppercase tracking-[0.24em] text-[var(--color-ivory)]/70">
-              Fashion Academy
+              Where Vision Becomes Fashion.
             </p>
           </motion.div>
         </motion.div>

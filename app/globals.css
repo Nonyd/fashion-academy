@@ -28,6 +28,10 @@
   /* Shadows */
   --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.25);
   --shadow-subtle: 0 8px 24px rgba(0, 0, 0, 0.18);
+
+  /* Section title accent (gold line) */
+  --section-accent-height: 2px;
+  --section-accent-width: 3rem;
 }
 
 :root[data-theme="dark"],
@@ -83,6 +87,15 @@ body {
 
 main {
   background: radial-gradient(circle at top, #111111 0, #050505 45%, #000000 100%);
+}
+
+:root[data-theme="light"] main {
+  background: radial-gradient(
+    circle at top,
+    #f0ebe3 0,
+    #e8e0d5 45%,
+    var(--color-noir) 100%
+  );
 }
 
 /* Luxury editorial defaults */
@@ -183,4 +196,26 @@ body.has-custom-cursor {
     transform: translateY(100%);
     opacity: 0;
   }
+}
+
+/* Section title with gold accent – use above h2 for editorial rhythm */
+.section-label {
+  font-size: 0.625rem;
+  font-weight: 500;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-gold);
+}
+
+.section-title-accent {
+  display: block;
+  width: var(--section-accent-width);
+  height: var(--section-accent-height);
+  margin-top: 0.75rem;
+  background: linear-gradient(
+    90deg,
+    var(--color-gold) 0%,
+    transparent 100%
+  );
+  border-radius: var(--radius-full);
 }
