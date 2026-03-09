@@ -198,6 +198,15 @@ body.has-custom-cursor {
   }
 }
 
+@keyframes loading-bar {
+  0% {
+    transform: scaleX(0);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
 /* Section title with gold accent – use above h2 for editorial rhythm */
 .section-label {
   font-size: 0.625rem;

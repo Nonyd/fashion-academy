@@ -3,13 +3,24 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
+const INTRO_SEEN_KEY = "pfa-intro-seen";
+
 export default function PageIntro() {
-  const [visible, setVisible] = useState(true);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    const seen = typeof window !== "undefined" && sessionStorage.getItem(INTRO_SEEN_KEY);
+    if (!seen) {
+      setVisible(true);
+      sessionStorage.setItem(INTRO_SEEN_KEY, "1");
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!visible) return;
     const timer = window.setTimeout(() => setVisible(false), 1200);
     return () => window.clearTimeout(timer);
-  }, []);
+  }, [visible]);
 
   return (
     <AnimatePresence>

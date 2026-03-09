@@ -4,18 +4,60 @@ import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { Menu, X, Globe } from "lucide-react";
+import { Menu, X, Globe, ChevronDown } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import { useTheme } from "./ThemeProvider";
 
-const NAV_ITEMS = [
-  { href: "/programs", label: "Programs" },
-  { href: "/faculty", label: "Faculty" },
-  { href: "/admissions", label: "Admissions" },
-  { href: "/about", label: "About" },
-  { href: "/events", label: "Events" },
-  { href: "/contact", label: "Contact" },
-  { href: "/alumni", label: "Alumni" },
+type NavLink = { label: string; href: string };
+type NavItem = { label: string; href: string; children?: NavLink[] };
+
+const NAV_ITEMS: NavItem[] = [
+  {
+    label: "Programs",
+    href: "/programs",
+    children: [
+      { label: "All programs", href: "/programs" },
+      { label: "Fashion Design", href: "/programs" },
+      { label: "Styling & Art Direction", href: "/programs" },
+      { label: "Fashion Business & Luxury", href: "/programs" },
+      { label: "Textile Design", href: "/programs" },
+      { label: "Fashion Photography", href: "/programs" },
+      { label: "Fashion Technology & AI", href: "/programs" },
+    ],
+  },
+  { label: "Faculty", href: "/faculty", children: [{ label: "Our faculty", href: "/faculty" }] },
+  {
+    label: "Admissions",
+    href: "/admissions",
+    children: [
+      { label: "How to apply", href: "/admissions" },
+      { label: "Apply now", href: "/admissions" },
+    ],
+  },
+  {
+    label: "About",
+    href: "/about",
+    children: [
+      { label: "Our story", href: "/about" },
+      { label: "Campuses", href: "/about" },
+    ],
+  },
+  {
+    label: "Events",
+    href: "/events",
+    children: [{ label: "Upcoming events", href: "/events" }] },
+  {
+    label: "Contact",
+    href: "/contact",
+    children: [
+      { label: "Get in touch", href: "/contact" },
+      { label: "Campuses", href: "/contact" },
+    ],
+  },
+  {
+    label: "Alumni",
+    href: "/alumni",
+    children: [{ label: "Alumni network", href: "/alumni" }] },
 ];
 
 const LANGUAGES = [
@@ -28,6 +70,8 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [expandedMobile, setExpandedMobile] = useState<string | null>(null);
   const [activeLang, setActiveLang] = useState("EN");
   const { theme } = useTheme();
 
@@ -42,10 +86,17 @@ export default function Navbar() {
   useEffect(() => {
     if (!menuOpen) return;
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setMenuOpen(false);
+      if (e.key === "Escape") {
+        setExpandedMobile(null);
+        setMenuOpen(false);
+      }
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
+
+  useEffect(() => {
+    if (!menuOpen) setExpandedMobile(null);
   }, [menuOpen]);
 
   return (
@@ -77,16 +128,61 @@ export default function Navbar() {
           </span>
         </Link>
 
-        <div className="hidden items-center gap-10 md:flex">
-          <div className="flex items-center gap-8 text-xs font-medium tracking-[0.22em] text-[var(--color-ivory)]/70">
+        <div className="hidden items-center gap-8 md:flex">
+          <div className="flex items-center gap-6 text-xs font-medium tracking-[0.22em] text-[var(--color-ivory)]/70 lg:gap-8">
             {NAV_ITEMS.map((item) => (
-              <a
+              <div
                 key={item.href}
-                href={item.href}
-                className="uppercase transition-colors hover:text-[var(--color-ivory)] focus:outline-none focus-visible:text-[var(--color-ivory)]"
+                className="relative"
+                onMouseEnter={() => item.children && setOpenDropdown(item.label)}
+                onMouseLeave={() => setOpenDropdown(null)}
               >
-                {item.label}
-              </a>
+                {item.children ? (
+                  <>
+                    <Link
+                      href={item.href}
+                      className="flex items-center gap-1 uppercase transition-colors hover:text-[var(--color-ivory)] focus:outline-none focus-visible:text-[var(--color-ivory)]"
+                    >
+                      {item.label}
+                      <ChevronDown
+                        className={`h-3.5 w-3.5 transition-transform ${openDropdown === item.label ? "rotate-180" : ""}`}
+                        aria-hidden
+                      />
+                    </Link>
+                    <AnimatePresence>
+                      {openDropdown === item.label && (
+                        <motion.ul
+                          initial={{ opacity: 0, y: -6 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -6 }}
+                          transition={{ duration: 0.15 }}
+                          className="absolute left-0 top-full mt-2 min-w-[200px] rounded-xl border border-white/10 bg-[var(--color-charcoal)]/98 py-1.5 shadow-xl backdrop-blur"
+                          role="menu"
+                        >
+                          {item.children.map((child) => (
+                            <li key={child.href + child.label} role="none">
+                              <Link
+                                href={child.href}
+                                role="menuitem"
+                                className="block px-4 py-2.5 text-[11px] uppercase tracking-[0.2em] text-[var(--color-ivory)]/80 transition-colors hover:bg-white/5 hover:text-[var(--color-ivory)] focus:outline-none focus-visible:bg-white/5 focus-visible:text-[var(--color-ivory)]"
+                              >
+                                {child.label}
+                              </Link>
+                            </li>
+                          ))}
+                        </motion.ul>
+                      )}
+                    </AnimatePresence>
+                  </>
+                ) : (
+                  <Link
+                    href={item.href}
+                    className="uppercase transition-colors hover:text-[var(--color-ivory)] focus:outline-none focus-visible:text-[var(--color-ivory)]"
+                  >
+                    {item.label}
+                  </Link>
+                )}
+              </div>
             ))}
           </div>
           <div className="flex items-center gap-4">
@@ -135,18 +231,18 @@ export default function Navbar() {
               </AnimatePresence>
             </div>
             <ThemeToggle />
-            <a
+            <Link
               href="/auth/login"
               className="rounded-full border border-white/25 px-5 py-2 text-xs font-medium uppercase tracking-[0.28em] text-[var(--color-ivory)] transition-colors hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold-light)]"
             >
               Login
-            </a>
-            <a
+            </Link>
+            <Link
               href="/admissions"
               className="rounded-full border border-[var(--color-gold)] bg-[var(--color-gold)] px-5 py-2 text-xs font-medium uppercase tracking-[0.28em] text-[var(--color-noir)] transition-colors hover:bg-[var(--color-gold-light)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold-light)]"
             >
               Apply Now
-            </a>
+            </Link>
           </div>
         </div>
 
@@ -194,38 +290,88 @@ export default function Navbar() {
                   hidden: {},
                   visible: { transition: { staggerChildren: 0.06 } },
                 }}
-                className="space-y-6 text-2xl font-medium"
+                className="space-y-2"
               >
                 {NAV_ITEMS.map((item) => (
-                  <motion.a
+                  <motion.div
                     key={item.href}
-                    href={item.href}
-                    onClick={() => setMenuOpen(false)}
                     variants={{
                       hidden: { opacity: 0, y: 24 },
                       visible: { opacity: 1, y: 0 },
                     }}
-                    className="block border-b border-white/10 pb-4 text-[var(--color-ivory)]"
+                    className="border-b border-white/10"
                   >
-                    {item.label}
-                  </motion.a>
+                    {item.children ? (
+                      <>
+                        <button
+                          type="button"
+                          onClick={() =>
+                            setExpandedMobile(expandedMobile === item.label ? null : item.label)
+                          }
+                          className="flex w-full items-center justify-between py-4 text-left text-xl font-medium text-[var(--color-ivory)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)]"
+                          aria-expanded={expandedMobile === item.label}
+                        >
+                          {item.label}
+                          <ChevronDown
+                            className={`h-5 w-5 shrink-0 transition-transform ${
+                              expandedMobile === item.label ? "rotate-180" : ""
+                            }`}
+                            aria-hidden
+                          />
+                        </button>
+                        <AnimatePresence>
+                          {expandedMobile === item.label && (
+                            <motion.ul
+                              initial={{ height: 0, opacity: 0 }}
+                              animate={{ height: "auto", opacity: 1 }}
+                              exit={{ height: 0, opacity: 0 }}
+                              transition={{ duration: 0.2 }}
+                              className="overflow-hidden"
+                              role="menu"
+                            >
+                              {item.children.map((child) => (
+                                <li key={child.href + child.label} role="none">
+                                  <Link
+                                    href={child.href}
+                                    onClick={() => setMenuOpen(false)}
+                                    role="menuitem"
+                                    className="block border-t border-white/5 py-3 pl-4 text-base text-[var(--color-ivory)]/80 hover:text-[var(--color-ivory)]"
+                                  >
+                                    {child.label}
+                                  </Link>
+                                </li>
+                              ))}
+                            </motion.ul>
+                          )}
+                        </AnimatePresence>
+                      </>
+                    ) : (
+                      <Link
+                        href={item.href}
+                        onClick={() => setMenuOpen(false)}
+                        className="block py-4 text-xl font-medium text-[var(--color-ivory)]"
+                      >
+                        {item.label}
+                      </Link>
+                    )}
+                  </motion.div>
                 ))}
               </motion.div>
               <div className="space-y-4">
-                <a
+                <Link
                   href="/admissions"
                   onClick={() => setMenuOpen(false)}
                   className="block w-full rounded-full border border-[var(--color-gold)] bg-[var(--color-gold)] px-6 py-3 text-center text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-noir)]"
                 >
                   Apply Now
-                </a>
-                <a
+                </Link>
+                <Link
                   href="/auth/login"
                   onClick={() => setMenuOpen(false)}
                   className="block w-full rounded-full border border-white/25 bg-transparent px-6 py-3 text-center text-xs font-semibold uppercase tracking-[0.3em] text-[var(--color-ivory)]"
                 >
                   Login
-                </a>
+                </Link>
                 <p className="text-xs text-[var(--color-muted)]">
                   Est. 2020 · Lagos · Abuja
                 </p>

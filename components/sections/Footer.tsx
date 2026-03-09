@@ -43,29 +43,29 @@ export default function Footer() {
             </h3>
             <ul className="mt-3 space-y-2 text-xs">
               <li>
-                <a href="/programs" className="hover:text-[var(--color-ivory)]">
+                <Link href="/programs" className="hover:text-[var(--color-ivory)]">
                   Fashion Design
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/programs" className="hover:text-[var(--color-ivory)]">
+                <Link href="/programs" className="hover:text-[var(--color-ivory)]">
                   Styling & Art Direction
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/programs" className="hover:text-[var(--color-ivory)]">
+                <Link href="/programs" className="hover:text-[var(--color-ivory)]">
                   Fashion Business & Luxury
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/programs" className="hover:text-[var(--color-ivory)]">
+                <Link href="/programs" className="hover:text-[var(--color-ivory)]">
                   Textile Design
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/programs" className="hover:text-[var(--color-ivory)]">
+                <Link href="/programs" className="hover:text-[var(--color-ivory)]">
                   Technology & AI
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -76,29 +76,29 @@ export default function Footer() {
             </h3>
             <ul className="mt-3 space-y-2 text-xs">
               <li>
-                <a href="/about" className="hover:text-[var(--color-ivory)]">
+                <Link href="/about" className="hover:text-[var(--color-ivory)]">
                   About the Academy
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/faculty" className="hover:text-[var(--color-ivory)]">
+                <Link href="/faculty" className="hover:text-[var(--color-ivory)]">
                   Faculty
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/events" className="hover:text-[var(--color-ivory)]">
+                <Link href="/events" className="hover:text-[var(--color-ivory)]">
                   Events
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/" className="hover:text-[var(--color-ivory)]">
+                <Link href="/" className="hover:text-[var(--color-ivory)]">
                   Press & Careers
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/alumni" className="hover:text-[var(--color-ivory)]">
+                <Link href="/alumni" className="hover:text-[var(--color-ivory)]">
                   Alumni
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
