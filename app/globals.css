@@ -59,6 +59,13 @@
   --color-muted: #6b6b6b;
 }
 
+/* Dark mode: dropdown options – white text on black background */
+:root[data-theme="dark"] select option,
+:root:not([data-theme]) select option {
+  background: #0a0a0a;
+  color: #f5f0e8;
+}
+
 @theme inline {
   --color-background: var(--color-noir);
   --color-foreground: var(--color-ivory);

@@ -84,7 +84,7 @@ export default function Navbar() {
             href="/auth/login"
             className="rounded-full border border-white/25 bg-transparent px-5 py-2 text-xs font-medium uppercase tracking-[0.22em] text-[var(--color-ivory)] transition-colors hover:bg-white/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)]"
           >
-            Student Login
+            Login
           </Link>
           <Link
             href="/admissions/apply"
@@ -140,7 +140,7 @@ export default function Navbar() {
                   onClick={() => setMenuOpen(false)}
                   className="block w-full rounded-full border border-white/25 bg-transparent px-6 py-3 text-center text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-ivory)]"
                 >
-                  Student Login
+                  Login
                 </Link>
                 <Link
                   href="/admissions/apply"

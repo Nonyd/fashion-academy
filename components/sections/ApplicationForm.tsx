@@ -99,7 +99,8 @@ export default function ApplicationForm() {
         values.firstName?.trim() &&
         values.lastName?.trim() &&
         values.email?.trim() &&
-        values.phone?.trim()
+        values.phone?.trim() &&
+        values.nationality?.trim()
       );
     }
     if (stepId === "applicant-type") {
@@ -110,7 +111,16 @@ export default function ApplicationForm() {
     if (stepId === "program-campus") {
       return !!(values.programId && values.preferredCampus);
     }
-    if (stepId === "education") return true;
+    if (stepId === "education") {
+      if (values.hasPreviousEducation === "yes") {
+        return !!(
+          values.institutionName?.trim() &&
+          values.qualification?.trim() &&
+          values.yearObtained?.trim()
+        );
+      }
+      return true;
+    }
     if (stepId === "additional") return true;
     if (stepId === "review") return true;
     return true;
@@ -325,7 +335,7 @@ function PersonalStep({
       </div>
       <label className="block">
         <span className="mb-1 block text-xs font-medium text-[var(--color-muted)]">
-          Nationality
+          Nationality *
         </span>
         <input
           type="text"
@@ -599,11 +609,11 @@ function EducationStep({
           className="space-y-4 rounded-xl border border-[var(--color-gold)]/20 bg-[var(--color-gold)]/5 p-4"
         >
           <p className="text-xs font-medium text-[var(--color-gold)]">
-            Previous education details
+            Previous education details *
           </p>
           <label className="block">
             <span className="mb-1 block text-xs text-[var(--color-muted)]">
-              Institution name
+              Institution name *
             </span>
             <input
               type="text"
@@ -615,7 +625,7 @@ function EducationStep({
           </label>
           <label className="block">
             <span className="mb-1 block text-xs text-[var(--color-muted)]">
-              Qualification
+              Qualification *
             </span>
             <input
               type="text"
@@ -627,7 +637,7 @@ function EducationStep({
           </label>
           <label className="block">
             <span className="mb-1 block text-xs text-[var(--color-muted)]">
-              Year obtained
+              Year obtained *
             </span>
             <input
               type="text"
