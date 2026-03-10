@@ -2,26 +2,53 @@
 
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronRight } from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
 import { useTheme } from "./ThemeProvider";
+import { SIDEBAR_OVERVIEW, SIDEBAR_OPERATIONS } from "@/lib/data/about";
 
-const CENTER_LINKS: { label: string; href: string }[] = [
-  { label: "About", href: "/about" },
+const CENTER_LINKS: { label: string; href: string; megaMenu?: boolean }[] = [
+  { label: "About", href: "/about", megaMenu: true },
   { label: "Programs", href: "/programs" },
   { label: "Admissions", href: "/admissions" },
   { label: "Student Life", href: "/student-life" },
   { label: "Alumni", href: "/alumni" },
 ];
 
+function MegaMenuLink({
+  href,
+  label,
+  onClick,
+}: {
+  href: string;
+  label: string;
+  onClick?: () => void;
+}) {
+  return (
+    <Link
+      href={href}
+      onClick={onClick}
+      className="group flex items-center justify-between gap-2 py-2 text-xs uppercase tracking-[0.15em] text-[var(--color-ivory)]/85 transition-colors hover:text-[var(--color-gold)]"
+    >
+      <span>{label}</span>
+      <ChevronRight className="h-3.5 w-3.5 shrink-0 transition-transform duration-200 group-hover:translate-x-0.5" />
+    </Link>
+  );
+}
+
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [aboutOpen, setAboutOpen] = useState(false);
   const { theme } = useTheme();
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 24);
+    const onScroll = () => {
+      setIsScrolled(window.scrollY > 24);
+      setAboutOpen(false);
+    };
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -55,27 +82,105 @@ export default function Navbar() {
       >
         <Link
           href="/"
-          className="flex flex-col focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)]"
+          className="flex items-center gap-3 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)]"
           aria-label="Prudential Fashion Academy – Home"
         >
-          <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-ivory)] sm:text-sm">
-            Prudential Fashion Academy
-          </span>
-          <span className="mt-0.5 text-[10px] uppercase tracking-[0.25em] text-[var(--color-gold)] sm:text-xs">
-            Lagos, Nigeria
-          </span>
+          <Image
+            src="/logo.png"
+            alt=""
+            width={56}
+            height={56}
+            className={`h-12 w-12 shrink-0 object-contain sm:h-14 sm:w-14 ${theme === "light" ? "" : "invert"}`}
+          />
+          <div className="flex flex-col">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-ivory)] sm:text-sm">
+              Prudential Fashion Academy
+            </span>
+            <span className="mt-0.5 text-[10px] uppercase tracking-[0.25em] text-[var(--color-gold)] sm:text-xs">
+              Lagos, Nigeria
+            </span>
+          </div>
         </Link>
 
         <div className="hidden items-center gap-8 lg:flex">
-          {CENTER_LINKS.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className="text-xs font-medium uppercase tracking-[0.22em] text-[var(--color-ivory)]/80 transition-colors hover:text-[var(--color-ivory)] focus:outline-none focus-visible:text-[var(--color-ivory)]"
-            >
-              {item.label}
-            </Link>
-          ))}
+          {CENTER_LINKS.map((item) =>
+            item.megaMenu ? (
+              <div
+                key={item.href}
+                className="relative"
+                onMouseEnter={() => setAboutOpen(true)}
+                onMouseLeave={() => setAboutOpen(false)}
+              >
+                <Link
+                  href={item.href}
+                  className="flex items-center gap-1 text-xs font-medium uppercase tracking-[0.22em] text-[var(--color-ivory)]/80 transition-colors hover:text-[var(--color-ivory)] focus:outline-none focus-visible:text-[var(--color-ivory)]"
+                >
+                  {item.label}
+                  <ChevronRight
+                    className={`h-3.5 w-3.5 transition-transform duration-200 ${aboutOpen ? "rotate-90" : ""}`}
+                    aria-hidden
+                  />
+                </Link>
+                <AnimatePresence>
+                  {aboutOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -8 }}
+                      transition={{ duration: 0.2, ease: "easeOut" }}
+                      className="absolute left-0 top-full pt-2"
+                    >
+                      <div className="min-w-[420px] rounded-xl border border-white/10 bg-[var(--color-charcoal)]/98 py-5 shadow-xl backdrop-blur">
+                        <div className="grid grid-cols-2 gap-8 px-6">
+                          <div>
+                            <h3 className="mb-3 border-b border-[var(--color-gold)]/40 pb-2 text-[10px] font-semibold uppercase tracking-[0.25em] text-[var(--color-gold)]">
+                              Overview
+                            </h3>
+                            <ul className="space-y-0.5">
+                              {SIDEBAR_OVERVIEW.map((link) => (
+                                <li key={link.href}>
+                                  <MegaMenuLink href={link.href} label={link.label} />
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                          <div>
+                            <h3 className="mb-3 border-b border-[var(--color-gold)]/40 pb-2 text-[10px] font-semibold uppercase tracking-[0.25em] text-[var(--color-gold)]">
+                              Operations
+                            </h3>
+                            <ul className="space-y-0.5">
+                              {SIDEBAR_OPERATIONS.map((link) => (
+                                <li key={link.href}>
+                                  <MegaMenuLink href={link.href} label={link.label} />
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                        <div className="mt-3 border-t border-white/10 px-6 pt-3">
+                          <Link
+                            href="/about"
+                            className="group flex items-center gap-2 text-xs font-medium uppercase tracking-[0.15em] text-[var(--color-gold)] transition-colors hover:text-[var(--color-gold-light)]"
+                          >
+                            View all about
+                            <ChevronRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover:translate-x-0.5" />
+                          </Link>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="text-xs font-medium uppercase tracking-[0.22em] text-[var(--color-ivory)]/80 transition-colors hover:text-[var(--color-ivory)] focus:outline-none focus-visible:text-[var(--color-ivory)]"
+              >
+                {item.label}
+              </Link>
+            )
+          )}
         </div>
 
         <div className="hidden items-center gap-4 lg:flex">
@@ -123,7 +228,44 @@ export default function Navbar() {
           >
             <div className="flex h-full flex-col justify-between px-8 pb-10 pt-24">
               <nav className="space-y-1" aria-label="Mobile navigation">
-                {CENTER_LINKS.map((item) => (
+                <div className="border-b border-white/10">
+                  <Link
+                    href="/about"
+                    onClick={() => setMenuOpen(false)}
+                    className="block py-4 text-xl font-medium text-[var(--color-ivory)]"
+                  >
+                    About
+                  </Link>
+                  <div className="grid grid-cols-1 gap-2 pl-4 pb-4">
+                    <p className="text-[10px] font-semibold uppercase tracking-wider text-[var(--color-gold)]">
+                      Overview
+                    </p>
+                    {SIDEBAR_OVERVIEW.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => setMenuOpen(false)}
+                        className="text-sm text-[var(--color-ivory)]/80 hover:text-[var(--color-gold)]"
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                    <p className="mt-2 text-[10px] font-semibold uppercase tracking-wider text-[var(--color-gold)]">
+                      Operations
+                    </p>
+                    {SIDEBAR_OPERATIONS.map((link) => (
+                      <Link
+                        key={link.href}
+                        href={link.href}
+                        onClick={() => setMenuOpen(false)}
+                        className="text-sm text-[var(--color-ivory)]/80 hover:text-[var(--color-gold)]"
+                      >
+                        {link.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+                {CENTER_LINKS.filter((l) => !l.megaMenu).map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}

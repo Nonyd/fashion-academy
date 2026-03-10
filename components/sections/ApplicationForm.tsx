@@ -11,6 +11,7 @@ import {
   type StepId,
   type CampusId,
 } from "@/lib/applicationForm";
+import { COUNTRIES } from "@/lib/countries";
 
 export type FormValues = {
   // Personal
@@ -337,13 +338,18 @@ function PersonalStep({
         <span className="mb-1 block text-xs font-medium text-[var(--color-muted)]">
           Nationality *
         </span>
-        <input
-          type="text"
+        <select
           value={values.nationality}
           onChange={(e) => set("nationality", e.target.value)}
-          className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-2.5 text-sm text-[var(--color-ivory)] placeholder:text-[var(--color-muted)] focus:border-[var(--color-gold)] focus:outline-none"
-          placeholder="e.g. Nigerian"
-        />
+          className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-2.5 text-sm text-[var(--color-ivory)] focus:border-[var(--color-gold)] focus:outline-none"
+        >
+          <option value="">Select country</option>
+          {COUNTRIES.map((country) => (
+            <option key={country} value={country}>
+              {country}
+            </option>
+          ))}
+        </select>
       </label>
       <label className="block">
         <span className="mb-1 block text-xs font-medium text-[var(--color-muted)]">
