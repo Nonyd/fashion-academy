@@ -6,7 +6,7 @@ export default function Footer() {
   return (
     <footer className="border-t border-[var(--color-charcoal)] bg-[var(--color-noir)] px-6 pb-6 pt-16 lg:px-10 lg:pt-20">
       <div className="mx-auto max-w-6xl">
-        <div className="grid gap-10 text-sm text-[var(--color-ivory)]/75 md:grid-cols-2 lg:grid-cols-5">
+        <div className="grid gap-10 text-sm text-[var(--color-ivory)]/75 md:grid-cols-2 lg:grid-cols-6">
           <div className="space-y-4">
             <Link href="/" className="inline-block focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)]" aria-label="Prudential Fashion Academy – Home">
               <Image
@@ -77,27 +77,44 @@ export default function Footer() {
             <ul className="mt-3 space-y-2 text-xs">
               <li>
                 <Link href="/about" className="hover:text-[var(--color-ivory)]">
-                  About the Academy
+                  The Academy
                 </Link>
               </li>
               <li>
                 <Link href="/faculty" className="hover:text-[var(--color-ivory)]">
-                  Faculty
+                  The Founder
                 </Link>
               </li>
+              <li>
+                <Link href="/about" className="hover:text-[var(--color-ivory)]">
+                  Campuses
+                </Link>
+              </li>
+              <li>
+                <Link href="/alumni" className="hover:text-[var(--color-ivory)]">
+                  Alumni
+                </Link>
+              </li>
+              <li>
+                <Link href="/jobs" className="hover:text-[var(--color-ivory)]">
+                  Jobs At PFA
+                </Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-xs font-medium uppercase tracking-[0.26em] text-[var(--color-muted)]">
+              More
+            </h3>
+            <ul className="mt-3 space-y-2 text-xs">
               <li>
                 <Link href="/events" className="hover:text-[var(--color-ivory)]">
                   Events
                 </Link>
               </li>
               <li>
-                <Link href="/" className="hover:text-[var(--color-ivory)]">
-                  Press & Careers
-                </Link>
-              </li>
-              <li>
-                <Link href="/alumni" className="hover:text-[var(--color-ivory)]">
-                  Alumni
+                <Link href="/news" className="hover:text-[var(--color-ivory)]">
+                  News / Articles
                 </Link>
               </li>
             </ul>

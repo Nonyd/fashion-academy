@@ -13,24 +13,32 @@ type NavItem = { label: string; href: string; children?: NavLink[] };
 
 const NAV_ITEMS: NavItem[] = [
   {
+    label: "About",
+    href: "/about",
+    children: [
+      { label: "The Academy", href: "/about" },
+      { label: "The Founder", href: "/faculty" },
+      { label: "Campuses", href: "/about" },
+      { label: "Alumni", href: "/alumni" },
+      { label: "Jobs At PFA", href: "/jobs" },
+    ],
+  },
+  {
     label: "Programs",
     href: "/programs",
     children: [
-      { label: "All programs", href: "/programs" },
       { label: "Fashion Design", href: "/programs" },
       { label: "Styling & Art Direction", href: "/programs" },
-      { label: "Fashion Business & Luxury", href: "/programs" },
+      { label: "Fashion Business & Luxury Management", href: "/programs" },
       { label: "Textile Design", href: "/programs" },
       { label: "Fashion Photography", href: "/programs" },
       { label: "Fashion Technology & AI", href: "/programs" },
     ],
   },
-  { label: "Faculty", href: "/faculty" },
   { label: "Admissions", href: "/admissions" },
-  { label: "About", href: "/about" },
   { label: "Events", href: "/events" },
   { label: "Contact", href: "/contact" },
-  { label: "Alumni", href: "/alumni" },
+  { label: "News / Articles", href: "/news" },
 ];
 
 const LANGUAGES = [
