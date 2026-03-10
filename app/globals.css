@@ -78,6 +78,11 @@
   box-sizing: border-box;
 }
 
+/* Allow date inputs to shrink in flex/grid on mobile */
+input[type="date"] {
+  min-width: 0;
+}
+
 html,
 body {
   margin: 0;

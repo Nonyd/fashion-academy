@@ -226,43 +226,53 @@ export default function Navbar() {
                 : "bg-[rgba(4,4,4,0.96)]"
             }`}
           >
+            <button
+              type="button"
+              onClick={() => setMenuOpen(false)}
+              className="absolute right-6 top-6 z-50 inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 bg-black/40 text-[var(--color-ivory)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] sm:right-8 sm:top-8"
+              aria-label="Close menu"
+            >
+              <X className="h-5 w-5" />
+            </button>
             <div className="flex min-h-0 flex-1 flex-col px-6 pb-8 pt-24 sm:px-8 sm:pb-10">
               <nav
                 className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden overscroll-contain space-y-1 pb-6"
                 style={{ WebkitOverflowScrolling: "touch" }}
                 aria-label="Mobile navigation"
               >
-                <div className="border-b border-white/10">
-                  <Link
-                    href="/about"
-                    onClick={() => setMenuOpen(false)}
-                    className="block py-4 text-xl font-medium text-[var(--color-ivory)]"
-                  >
-                    About
-                  </Link>
-                  <div className="grid grid-cols-1 gap-2 pl-4 pb-4">
-                    <p className="py-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--color-gold)]">
-                      Overview
+                <div className="border-b border-white/10 pb-4">
+                  <div className="py-4">
+                    <Link
+                      href="/about"
+                      onClick={() => setMenuOpen(false)}
+                      className="text-xl font-medium text-[var(--color-ivory)]"
+                    >
+                      About
+                    </Link>
+                    <p className="mt-1 flex flex-wrap gap-x-1.5 text-[10px] font-semibold uppercase tracking-wider text-[var(--color-gold)]">
+                      <span aria-hidden>&gt;</span>
+                      <span>Overview</span>
+                      <span aria-hidden>,</span>
+                      <span>Operations</span>
                     </p>
+                  </div>
+                  <div className="flex flex-wrap gap-x-4 gap-y-2 text-sm sm:gap-x-6">
                     {SIDEBAR_OVERVIEW.map((link) => (
                       <Link
                         key={link.href}
                         href={link.href}
                         onClick={() => setMenuOpen(false)}
-                        className="block py-1.5 text-sm text-[var(--color-ivory)]/80 hover:text-[var(--color-gold)]"
+                        className="text-[var(--color-ivory)]/80 hover:text-[var(--color-gold)]"
                       >
                         {link.label}
                       </Link>
                     ))}
-                    <p className="mt-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--color-gold)]">
-                      Operations
-                    </p>
                     {SIDEBAR_OPERATIONS.map((link) => (
                       <Link
                         key={link.href}
                         href={link.href}
                         onClick={() => setMenuOpen(false)}
-                        className="block py-1.5 text-sm text-[var(--color-ivory)]/80 hover:text-[var(--color-gold)]"
+                        className="text-[var(--color-ivory)]/80 hover:text-[var(--color-gold)]"
                       >
                         {link.label}
                       </Link>

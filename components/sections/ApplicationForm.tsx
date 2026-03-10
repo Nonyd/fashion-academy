@@ -145,7 +145,7 @@ export default function ApplicationForm() {
   };
 
   return (
-    <div className="mx-auto max-w-3xl">
+    <div className="mx-auto max-w-3xl overflow-x-hidden">
       {/* Progress */}
       <div className="mb-10">
         <div className="flex items-center justify-between gap-2">
@@ -306,16 +306,19 @@ function PersonalStep({
         </label>
       </div>
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-        <label className="block min-w-0">
+        <label className="block w-full min-w-0 max-w-full">
           <span className="mb-1 block text-xs font-medium text-[var(--color-muted)]">
             Date of birth
           </span>
-          <input
-            type="date"
-            value={values.dateOfBirth}
-            onChange={(e) => set("dateOfBirth", e.target.value)}
-            className="w-full min-h-[2.75rem] max-w-full rounded-lg border border-white/15 bg-white/5 px-4 py-2.5 text-sm text-[var(--color-ivory)] focus:border-[var(--color-gold)] focus:outline-none [&::-webkit-date-and-time-value]:min-h-[1.25rem]"
-          />
+          <div className="min-w-0 overflow-hidden rounded-lg border border-white/15 bg-white/5">
+            <input
+              type="date"
+              value={values.dateOfBirth}
+              onChange={(e) => set("dateOfBirth", e.target.value)}
+              className="block w-full min-w-0 min-h-[2.75rem] max-w-full rounded-lg border-0 bg-transparent px-4 py-2.5 text-sm text-[var(--color-ivory)] focus:outline-none [&::-webkit-date-and-time-value]:min-h-[1.25rem]"
+              style={{ minWidth: 0 }}
+            />
+          </div>
         </label>
         <label className="block min-w-0">
           <span className="mb-1 block text-xs font-medium text-[var(--color-muted)]">
