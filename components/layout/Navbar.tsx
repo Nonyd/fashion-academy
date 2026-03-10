@@ -25,39 +25,12 @@ const NAV_ITEMS: NavItem[] = [
       { label: "Fashion Technology & AI", href: "/programs" },
     ],
   },
-  { label: "Faculty", href: "/faculty", children: [{ label: "Our faculty", href: "/faculty" }] },
-  {
-    label: "Admissions",
-    href: "/admissions",
-    children: [
-      { label: "How to apply", href: "/admissions" },
-      { label: "Apply now", href: "/admissions" },
-    ],
-  },
-  {
-    label: "About",
-    href: "/about",
-    children: [
-      { label: "Our story", href: "/about" },
-      { label: "Campuses", href: "/about" },
-    ],
-  },
-  {
-    label: "Events",
-    href: "/events",
-    children: [{ label: "Upcoming events", href: "/events" }] },
-  {
-    label: "Contact",
-    href: "/contact",
-    children: [
-      { label: "Get in touch", href: "/contact" },
-      { label: "Campuses", href: "/contact" },
-    ],
-  },
-  {
-    label: "Alumni",
-    href: "/alumni",
-    children: [{ label: "Alumni network", href: "/alumni" }] },
+  { label: "Faculty", href: "/faculty" },
+  { label: "Admissions", href: "/admissions" },
+  { label: "About", href: "/about" },
+  { label: "Events", href: "/events" },
+  { label: "Contact", href: "/contact" },
+  { label: "Alumni", href: "/alumni" },
 ];
 
 const LANGUAGES = [

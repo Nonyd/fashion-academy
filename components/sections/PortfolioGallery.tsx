@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { X } from "lucide-react";
 import { portfolioItems } from "@/lib/data";
 
 export default function PortfolioGallery() {
@@ -79,17 +80,25 @@ export default function PortfolioGallery() {
       <AnimatePresence>
         {activeItem && (
           <motion.div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Image lightbox"
             className="fixed inset-0 z-40 flex items-center justify-center bg-black/85 px-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            onClick={() => setActiveId(null)}
           >
             <button
               type="button"
-              onClick={() => setActiveId(null)}
-              className="absolute right-6 top-6 rounded-full border border-white/30 bg-black/60 px-3 py-1 text-xs uppercase tracking-[0.24em] text-[var(--color-ivory)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)]"
+              onClick={(e) => {
+                e.stopPropagation();
+                setActiveId(null);
+              }}
+              className="absolute right-6 top-6 z-50 flex h-10 w-10 items-center justify-center rounded-full border border-white/30 bg-black/60 text-[var(--color-ivory)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)]"
+              aria-label="Close lightbox"
             >
-              Close
+              <X className="h-5 w-5" />
             </button>
             <motion.div
               initial={{ opacity: 0, scale: 0.96 }}
@@ -97,6 +106,7 @@ export default function PortfolioGallery() {
               exit={{ opacity: 0, scale: 0.97 }}
               transition={{ duration: 0.25 }}
               className="relative max-h-[80vh] w-full max-w-4xl overflow-hidden rounded-3xl border border-white/15 bg-[var(--color-noir)]"
+              onClick={(e) => e.stopPropagation()}
             >
               <div className="relative aspect-[16/10]">
                 <Image
