@@ -109,7 +109,7 @@ export default function AdmissionsPageContent() {
             className="mt-16 text-center"
           >
             <Link
-              href="/apply"
+              href="/admissions/apply"
               className="inline-flex items-center gap-2 rounded-full bg-[var(--color-gold)] px-8 py-3 text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-noir)] transition-colors hover:bg-[var(--color-gold-light)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)]"
             >
               Apply Now

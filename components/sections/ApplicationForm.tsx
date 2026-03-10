@@ -117,7 +117,7 @@ export default function ApplicationForm() {
   };
 
   const goNext = () => {
-    if (!canProceed() && stepId !== "review") return;
+    if (stepId !== "review" && !canProceed()) return;
     if (isLast) {
       setSubmitIntent(true);
       return;
@@ -129,6 +129,7 @@ export default function ApplicationForm() {
 
   const goToStep = (id: StepId) => {
     const idx = stepIdToIndex(id);
+    if (idx > stepIndex) return;
     setStepIndex(idx);
   };
 
@@ -209,7 +210,8 @@ export default function ApplicationForm() {
         <button
           type="button"
           onClick={goNext}
-          className="inline-flex items-center gap-2 rounded-full bg-[var(--color-gold)] px-8 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-noir)] transition-colors hover:bg-[var(--color-gold-light)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] disabled:opacity-60"
+          disabled={!isLast && !canProceed()}
+          className="inline-flex items-center gap-2 rounded-full bg-[var(--color-gold)] px-8 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-[var(--color-noir)] transition-colors hover:bg-[var(--color-gold-light)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] disabled:cursor-not-allowed disabled:opacity-60"
         >
           {isLast ? "Make payments" : "Continue"}
           <ChevronRight className="h-4 w-4" />
