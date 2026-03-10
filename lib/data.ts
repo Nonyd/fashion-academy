@@ -253,19 +253,9 @@ export const pressLogos: PressLogo[] = [
       "https://upload.wikimedia.org/wikipedia/commons/5/56/Women%27s_Wear_Daily_logo.svg",
   },
   {
-    id: "elle",
-    name: "Elle",
-    imageUrl: "/press/elle.png",
-  },
-  {
     id: "harpers",
     name: "Harper's Bazaar",
     imageUrl: "/press/harpers-bazaar.png",
-  },
-  {
-    id: "marie-claire",
-    name: "Marie Claire",
-    imageUrl: "/press/marie-claire.png",
   },
 ];
 
