@@ -11,6 +11,7 @@ import Testimonials from "@/components/sections/Testimonials";
 import PressBar from "@/components/sections/PressBar";
 import EventsCalendar from "@/components/sections/EventsCalendar";
 import PortalEcosystem from "@/components/sections/PortalEcosystem";
+import CampusFacilities from "@/components/sections/CampusFacilities";
 import ApplicationCTA from "@/components/sections/ApplicationCTA";
 import Footer from "@/components/sections/Footer";
 
@@ -31,6 +32,7 @@ export default function Home() {
         <PressBar />
         <EventsCalendar />
         <PortalEcosystem />
+        <CampusFacilities />
         <ApplicationCTA />
       </main>
       <Footer />
