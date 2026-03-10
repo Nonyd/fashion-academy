@@ -30,7 +30,7 @@ export default function ContactUsPage() {
 
       <section className="mb-12">
         <h2 className="section-label mb-4">Contact Information</h2>
-        <div className="flex flex-wrap gap-8 text-sm text-[var(--color-ivory)]/90">
+        <div className="flex flex-wrap gap-8 text-sm text-[var(--color-ivory)]/90 min-w-0">
           <div className="flex items-center gap-2">
             <MapPin className="h-4 w-4 shrink-0 text-[var(--color-gold)]" />
             <span>Egbeda, Lagos · Ajah, Lagos · Ojodu, Lagos · Abuja</span>

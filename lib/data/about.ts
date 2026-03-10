@@ -477,7 +477,7 @@ export const OPERATIONS_UNITS: OperationsUnit[] = [
 export const FOUNDER_BIO = {
   name: "Prudent Gabriel Peterson",
   title: "Founder & Director",
-  imageUrl: "https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=600&q=80",
+  imageUrl: "/faculty-prudent-gabriel-peterson.png",
   bio: [
     "Prudent Gabriel Peterson founded Prudential Fashion Academy in 2020 with a vision to create a world-class institution that bridges African creativity and global fashion standards. With over two decades of experience in design, education, and brand leadership, he has shaped PFA into a leading name in fashion education across Nigeria and the region.",
     "His career spans fashion design, retail, and education. Before establishing PFA, he led design teams and consulted for international and local brands, and taught at several fashion and design schools. This combination of industry practice and pedagogy informs the academy's curriculum and culture.",

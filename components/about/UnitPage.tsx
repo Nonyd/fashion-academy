@@ -21,7 +21,7 @@ export default function UnitPage({ unit, breadcrumbItems }: UnitPageProps) {
         <p className="mb-6 max-w-3xl text-sm leading-relaxed text-[var(--color-ivory)]/90">
           {unit.aboutParagraph}
         </p>
-        <div className="relative aspect-video max-w-2xl overflow-hidden rounded-xl bg-white/5">
+        <div className="relative aspect-video w-full max-w-2xl overflow-hidden rounded-xl bg-white/5">
           <Image
             src={unit.imageUrl}
             alt={unit.name}

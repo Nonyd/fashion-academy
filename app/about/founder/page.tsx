@@ -22,8 +22,8 @@ export default function FounderPage() {
         The Founder & Director
       </h1>
 
-      <div className="mb-12 grid gap-10 lg:grid-cols-[320px_1fr]">
-        <div className="relative aspect-[3/4] max-w-md overflow-hidden rounded-xl bg-white/5 lg:max-w-none">
+      <div className="mb-12 grid w-full min-w-0 gap-10 lg:grid-cols-[320px_1fr]">
+        <div className="relative aspect-[3/4] w-full max-w-md overflow-hidden rounded-xl bg-white/5 lg:max-w-none">
           <Image
             src={FOUNDER_BIO.imageUrl}
             alt={FOUNDER_BIO.name}

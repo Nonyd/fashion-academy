@@ -22,7 +22,7 @@ export default function ContactForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="max-w-xl space-y-4">
+    <form onSubmit={handleSubmit} className="w-full min-w-0 max-w-xl space-y-4">
       <label className="block">
         <span className="mb-1 block text-xs font-medium text-[var(--color-muted)]">
           Name *

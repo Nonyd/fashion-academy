@@ -25,7 +25,7 @@ export default function ManagementTeamPage() {
         Our management team oversees day-to-day operations, programmes, facilities, and
         administration, ensuring a smooth and supportive environment for students and staff.
       </p>
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid w-full min-w-0 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {MANAGEMENT_TEAM.map((person) => (
           <PersonCard key={person.id} person={person} showDepartment />
         ))}

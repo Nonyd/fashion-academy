@@ -21,7 +21,7 @@ export default function OverviewPage() {
         About the Academy
       </h1>
 
-      <div className="relative mb-12 aspect-[21/9] max-w-4xl overflow-hidden rounded-xl bg-white/5">
+      <div className="relative mb-12 aspect-[21/9] w-full max-w-4xl overflow-hidden rounded-xl bg-white/5">
         <Image
           src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=1200&q=80"
           alt="Fashion atelier"

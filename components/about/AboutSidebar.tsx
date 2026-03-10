@@ -53,7 +53,7 @@ export default function AboutSidebar() {
         </nav>
       </aside>
 
-      <div className="mb-6 overflow-x-auto lg:hidden">
+      <div className="mb-6 w-full min-w-0 overflow-x-auto lg:hidden -mx-1 px-1" style={{ WebkitOverflowScrolling: "touch" }}>
         <div className="flex gap-2 pb-2">
           {[...SIDEBAR_OVERVIEW, ...SIDEBAR_OPERATIONS].map((item) => (
             <Link

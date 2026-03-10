@@ -31,7 +31,7 @@ export default function AboutPage() {
         Creativity · Excellence · Identity
       </p>
 
-      <section className="mt-16 grid gap-12 md:grid-cols-2" aria-label="About directory">
+      <section className="mt-16 grid w-full min-w-0 gap-12 md:grid-cols-2" aria-label="About directory">
         <div>
           <h2 className="mb-6 border-b-2 border-[var(--color-gold)] pb-2 text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-ivory)]">
             Overview
@@ -70,8 +70,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="mt-20 grid gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16" aria-label="Introduction">
-        <div className="min-w-0">
+      <section className="mt-20 grid w-full min-w-0 gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16" aria-label="Introduction">
+        <div className="min-w-0 w-full">
           <p className="text-sm leading-relaxed text-[var(--color-ivory)]/90">
             Prudential Fashion Academy is a world-class fashion institution dedicated to producing
             the next generation of global fashion designers, stylists, and brand leaders. With a
@@ -96,7 +96,7 @@ export default function AboutPage() {
             <ArrowRight className="h-4 w-4" />
           </Link>
         </div>
-        <div className="relative aspect-[4/3] overflow-hidden rounded-xl bg-white/5">
+        <div className="relative aspect-[4/3] min-w-0 w-full overflow-hidden rounded-xl bg-white/5">
           <Image
             src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?auto=format&fit=crop&w=800&q=80"
             alt="Fashion academy atelier"

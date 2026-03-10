@@ -10,8 +10,8 @@ export default function AboutLayout({
   return (
     <>
       <Navbar />
-      <main id="main" className="relative overflow-hidden border-b border-[var(--color-charcoal)] bg-[var(--color-noir)] px-6 pt-20 pb-12 lg:px-10 lg:pt-28 lg:pb-16">
-        <div className="mx-auto max-w-6xl">
+      <main id="main" className="relative overflow-x-hidden border-b border-[var(--color-charcoal)] bg-[var(--color-noir)] px-4 pt-20 pb-12 sm:px-6 lg:px-10 lg:pt-28 lg:pb-16">
+        <div className="mx-auto w-full max-w-6xl min-w-0">
           <AboutLayoutWrapper>{children}</AboutLayoutWrapper>
         </div>
       </main>
