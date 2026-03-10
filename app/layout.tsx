@@ -19,7 +19,7 @@ const bodySans = DM_Sans({
 export const metadata: Metadata = {
   title: "Prudential Fashion Academy",
   description:
-    "The world's most immersive fashion education. Undergraduate, postgraduate and professional programs in fashion design, styling, luxury brand management, and more.",
+    "Where craft meets ambition. Immersive, on-campus programmes in Lagos and Abuja — fashion design, styling, luxury brand management, and more.",
   metadataBase: new URL("https://prudentialfashionacademy.com"),
   openGraph: {
     title: "Prudential Fashion Academy",

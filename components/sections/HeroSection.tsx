@@ -105,9 +105,9 @@ export default function HeroSection() {
             transition={{ delay: 1.2, duration: 0.5 }}
             className="max-w-md text-sm leading-relaxed text-[var(--color-ivory)]/75 sm:text-base"
           >
-            The world&apos;s most immersive fashion education. Online and
-            on-campus. Crafted for visionary designers, creative directors, and
-            future leaders of luxury.
+            Where craft meets ambition. Immersive, on-campus programmes in Lagos
+            and Abuja — for visionary designers, creative directors, and the
+            next generation of luxury.
           </motion.p>
 
           <motion.div
