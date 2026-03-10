@@ -220,14 +220,18 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className={`fixed inset-0 z-40 backdrop-blur-md lg:hidden ${
+            className={`fixed inset-0 z-40 flex flex-col backdrop-blur-md lg:hidden ${
               theme === "light"
                 ? "bg-[rgba(245,240,232,0.96)]"
                 : "bg-[rgba(4,4,4,0.96)]"
             }`}
           >
-            <div className="flex h-full flex-col justify-between px-8 pb-10 pt-24">
-              <nav className="space-y-1" aria-label="Mobile navigation">
+            <div className="flex min-h-0 flex-1 flex-col px-6 pb-8 pt-24 sm:px-8 sm:pb-10">
+              <nav
+                className="min-h-0 flex-1 overflow-y-auto overflow-x-hidden overscroll-contain space-y-1 pb-6"
+                style={{ WebkitOverflowScrolling: "touch" }}
+                aria-label="Mobile navigation"
+              >
                 <div className="border-b border-white/10">
                   <Link
                     href="/about"
@@ -237,7 +241,7 @@ export default function Navbar() {
                     About
                   </Link>
                   <div className="grid grid-cols-1 gap-2 pl-4 pb-4">
-                    <p className="text-[10px] font-semibold uppercase tracking-wider text-[var(--color-gold)]">
+                    <p className="py-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--color-gold)]">
                       Overview
                     </p>
                     {SIDEBAR_OVERVIEW.map((link) => (
@@ -245,12 +249,12 @@ export default function Navbar() {
                         key={link.href}
                         href={link.href}
                         onClick={() => setMenuOpen(false)}
-                        className="text-sm text-[var(--color-ivory)]/80 hover:text-[var(--color-gold)]"
+                        className="block py-1.5 text-sm text-[var(--color-ivory)]/80 hover:text-[var(--color-gold)]"
                       >
                         {link.label}
                       </Link>
                     ))}
-                    <p className="mt-2 text-[10px] font-semibold uppercase tracking-wider text-[var(--color-gold)]">
+                    <p className="mt-3 py-1 text-[10px] font-semibold uppercase tracking-wider text-[var(--color-gold)]">
                       Operations
                     </p>
                     {SIDEBAR_OPERATIONS.map((link) => (
@@ -258,7 +262,7 @@ export default function Navbar() {
                         key={link.href}
                         href={link.href}
                         onClick={() => setMenuOpen(false)}
-                        className="text-sm text-[var(--color-ivory)]/80 hover:text-[var(--color-gold)]"
+                        className="block py-1.5 text-sm text-[var(--color-ivory)]/80 hover:text-[var(--color-gold)]"
                       >
                         {link.label}
                       </Link>
@@ -276,7 +280,7 @@ export default function Navbar() {
                   </Link>
                 ))}
               </nav>
-              <div className="space-y-4">
+              <div className="shrink-0 space-y-4 border-t border-white/10 pt-6">
                 <Link
                   href="/auth/login"
                   onClick={() => setMenuOpen(false)}

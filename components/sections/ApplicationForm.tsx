@@ -253,8 +253,8 @@ function PersonalStep({
       <p className="text-sm text-[var(--color-ivory)]/70">
         Enter your full name and contact information.
       </p>
-      <div className="grid gap-4 sm:grid-cols-2">
-        <label className="block">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <label className="block min-w-0">
           <span className="mb-1 block text-xs font-medium text-[var(--color-muted)]">
             First name *
           </span>
@@ -266,7 +266,7 @@ function PersonalStep({
             placeholder="e.g. Ada"
           />
         </label>
-        <label className="block">
+        <label className="block min-w-0">
           <span className="mb-1 block text-xs font-medium text-[var(--color-muted)]">
             Last name *
           </span>
@@ -279,8 +279,8 @@ function PersonalStep({
           />
         </label>
       </div>
-      <div className="grid gap-4 sm:grid-cols-2">
-        <label className="block">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <label className="block min-w-0">
           <span className="mb-1 block text-xs font-medium text-[var(--color-muted)]">
             Email *
           </span>
@@ -292,7 +292,7 @@ function PersonalStep({
             placeholder="ada@example.com"
           />
         </label>
-        <label className="block">
+        <label className="block min-w-0">
           <span className="mb-1 block text-xs font-medium text-[var(--color-muted)]">
             Phone *
           </span>
@@ -305,8 +305,8 @@ function PersonalStep({
           />
         </label>
       </div>
-      <div className="grid gap-4 sm:grid-cols-2">
-        <label className="block">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <label className="block min-w-0">
           <span className="mb-1 block text-xs font-medium text-[var(--color-muted)]">
             Date of birth
           </span>
@@ -314,10 +314,10 @@ function PersonalStep({
             type="date"
             value={values.dateOfBirth}
             onChange={(e) => set("dateOfBirth", e.target.value)}
-            className="w-full rounded-lg border border-white/15 bg-white/5 px-4 py-2.5 text-sm text-[var(--color-ivory)] focus:border-[var(--color-gold)] focus:outline-none"
+            className="w-full min-h-[2.75rem] max-w-full rounded-lg border border-white/15 bg-white/5 px-4 py-2.5 text-sm text-[var(--color-ivory)] focus:border-[var(--color-gold)] focus:outline-none [&::-webkit-date-and-time-value]:min-h-[1.25rem]"
           />
         </label>
-        <label className="block">
+        <label className="block min-w-0">
           <span className="mb-1 block text-xs font-medium text-[var(--color-muted)]">
             Gender
           </span>
@@ -363,8 +363,8 @@ function PersonalStep({
           placeholder="Street, area"
         />
       </label>
-      <div className="grid gap-4 sm:grid-cols-2">
-        <label className="block">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <label className="block min-w-0">
           <span className="mb-1 block text-xs font-medium text-[var(--color-muted)]">
             City
           </span>
@@ -376,7 +376,7 @@ function PersonalStep({
             placeholder="e.g. Lagos"
           />
         </label>
-        <label className="block">
+        <label className="block min-w-0">
           <span className="mb-1 block text-xs font-medium text-[var(--color-muted)]">
             State
           </span>
