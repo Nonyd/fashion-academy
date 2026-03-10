@@ -3,8 +3,12 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { pressLogos } from "@/lib/data";
+import { useTheme } from "@/components/layout/ThemeProvider";
 
 export default function PressBar() {
+  const { theme } = useTheme();
+  const isDark = theme === "dark" || !theme;
+
   return (
     <section
       className="border-y border-[var(--color-charcoal)] bg-[var(--color-noir)] px-6 py-10 lg:px-10"
@@ -22,14 +26,18 @@ export default function PressBar() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.6 }}
               transition={{ duration: 0.4 }}
-              className="group relative h-6 w-24 opacity-70 transition hover:opacity-100"
+              className="group relative h-6 w-24 opacity-90 transition hover:opacity-100"
             >
               <Image
                 src={logo.imageUrl}
                 alt={logo.name}
                 fill
                 sizes="96px"
-                className="object-contain grayscale brightness-0 invert contrast-90 transition group-hover:grayscale-0 group-hover:brightness-100 group-hover:invert-0 group-hover:contrast-100"
+                className={`object-contain transition ${
+                  isDark
+                    ? "brightness-0 invert contrast-90 group-hover:contrast-100"
+                    : "invert-0 contrast-[1.2]"
+                }`}
               />
             </motion.div>
           ))}
