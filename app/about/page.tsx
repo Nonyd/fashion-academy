@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import Breadcrumb from "@/components/about/Breadcrumb";
 import StatBadge from "@/components/about/StatBadge";
+import AboutDirectoryAccordion from "@/components/about/AboutDirectoryAccordion";
 import { SIDEBAR_OVERVIEW, SIDEBAR_OPERATIONS } from "@/lib/data/about";
 
 export const metadata: Metadata = {
@@ -31,47 +32,10 @@ export default function AboutPage() {
         Creativity · Excellence · Identity
       </p>
 
-      <section
-        className="mt-16 flex w-full min-w-0 flex-col gap-12 md:grid md:grid-cols-2 md:gap-12"
-        aria-label="About directory"
-      >
-        <div className="min-w-0">
-          <h2 className="mb-6 border-b-2 border-[var(--color-gold)] pb-2 text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-ivory)]">
-            Overview
-          </h2>
-          <ul className="space-y-2">
-            {SIDEBAR_OVERVIEW.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="group inline-flex items-center gap-2 text-sm text-[var(--color-ivory)]/90 transition-colors hover:text-[var(--color-gold)]"
-                >
-                  {item.label}
-                  <ArrowRight className="h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-        <div className="min-w-0 border-t border-white/10 pt-12 md:border-t-0 md:pt-0">
-          <h2 className="mb-6 border-b-2 border-[var(--color-gold)] pb-2 text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-ivory)]">
-            Operations
-          </h2>
-          <ul className="space-y-2">
-            {SIDEBAR_OPERATIONS.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="group inline-flex items-center gap-2 text-sm text-[var(--color-ivory)]/90 transition-colors hover:text-[var(--color-gold)]"
-                >
-                  {item.label}
-                  <ArrowRight className="h-3.5 w-3.5 shrink-0 transition-transform group-hover:translate-x-1" />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
+      <AboutDirectoryAccordion
+        overviewLinks={SIDEBAR_OVERVIEW}
+        operationsLinks={SIDEBAR_OPERATIONS}
+      />
 
       <section className="mt-20 grid w-full min-w-0 gap-10 lg:grid-cols-[1fr_1fr] lg:gap-16" aria-label="Introduction">
         <div className="min-w-0 w-full">
