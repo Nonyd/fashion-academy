@@ -31,8 +31,11 @@ export default function AboutPage() {
         Creativity · Excellence · Identity
       </p>
 
-      <section className="mt-16 grid w-full min-w-0 gap-12 md:grid-cols-2" aria-label="About directory">
-        <div>
+      <section
+        className="mt-16 flex w-full min-w-0 flex-col gap-12 md:grid md:grid-cols-2 md:gap-12"
+        aria-label="About directory"
+      >
+        <div className="min-w-0">
           <h2 className="mb-6 border-b-2 border-[var(--color-gold)] pb-2 text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-ivory)]">
             Overview
           </h2>
@@ -50,7 +53,7 @@ export default function AboutPage() {
             ))}
           </ul>
         </div>
-        <div>
+        <div className="min-w-0 border-t border-white/10 pt-12 md:border-t-0 md:pt-0">
           <h2 className="mb-6 border-b-2 border-[var(--color-gold)] pb-2 text-sm font-semibold uppercase tracking-[0.2em] text-[var(--color-ivory)]">
             Operations
           </h2>
