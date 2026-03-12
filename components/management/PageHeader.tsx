@@ -12,11 +12,11 @@ export function PageHeader({
   return (
     <div className="flex items-start justify-between mb-6">
       <div>
-        <h1 className="text-2xl font-bold tracking-tight text-[#1A1A2E]">
+        <h1 className="text-2xl font-bold tracking-tight text-[var(--color-ivory)] font-[var(--font-display)]">
           {title}
         </h1>
         {subtitle && (
-          <p className="mt-1 text-sm text-[#6B7280]">{subtitle}</p>
+          <p className="mt-1 text-sm text-[var(--color-muted)]">{subtitle}</p>
         )}
       </div>
       {actions && <div className="flex items-center gap-2">{actions}</div>}

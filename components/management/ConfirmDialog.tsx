@@ -21,12 +21,12 @@ export function ConfirmDialog({
 }) {
   return (
     <Modal isOpen={isOpen} onClose={onClose} title={title} size="sm">
-      <p className="text-[#6B7280] mb-6">{message}</p>
+      <p className="text-[var(--color-muted)] mb-6">{message}</p>
       <div className="flex justify-end gap-3">
         <button
           type="button"
           onClick={onClose}
-          className="px-4 py-2 rounded-lg border border-[#E5E1F5] text-[#1A1A2E] font-medium hover:bg-[#F8F7FF]"
+          className="px-4 py-2 rounded-xl border border-white/10 text-[var(--color-ivory)] font-medium hover:bg-white/5"
         >
           Cancel
         </button>
@@ -36,10 +36,10 @@ export function ConfirmDialog({
             onConfirm();
             onClose();
           }}
-          className={`px-4 py-2 rounded-lg font-medium text-white ${
+          className={`px-4 py-2 rounded-xl font-medium ${
             variant === "danger"
-              ? "bg-[#EF4444] hover:bg-red-700"
-              : "bg-[#7C5CBF] hover:bg-[#4A3480]"
+              ? "bg-red-600 text-white hover:bg-red-700"
+              : "bg-[var(--color-gold)] text-[var(--color-noir)] hover:bg-[var(--color-gold-light)]"
           }`}
         >
           {confirmLabel}

@@ -25,9 +25,11 @@ function calculateTimeLeft(): TimeLeft {
 }
 
 export default function ApplicationCTA() {
-  const [timeLeft, setTimeLeft] = useState<TimeLeft>(calculateTimeLeft);
+  const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
 
   useEffect(() => {
+    // Run only on the client so the server and initial client render match
+    setTimeLeft(calculateTimeLeft());
     const id = window.setInterval(
       () => setTimeLeft(calculateTimeLeft()),
       1000,
@@ -94,10 +96,10 @@ export default function ApplicationCTA() {
           </p>
           <div className="grid grid-cols-4 gap-2 text-center text-[var(--color-noir)]">
             {([
-              ["Days", timeLeft.days],
-              ["Hours", timeLeft.hours],
-              ["Minutes", timeLeft.minutes],
-              ["Seconds", timeLeft.seconds],
+              ["Days", timeLeft?.days ?? 0],
+              ["Hours", timeLeft?.hours ?? 0],
+              ["Minutes", timeLeft?.minutes ?? 0],
+              ["Seconds", timeLeft?.seconds ?? 0],
             ] as const).map(([label, value]) => (
               <div
                 key={label}

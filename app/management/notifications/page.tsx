@@ -21,15 +21,15 @@ export default function NotificationsPage() {
 
   return (
     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
-      <PageHeader title="Notifications" actions={<span className="text-sm text-[#7C5CBF]">Mark All Read</span>} />
-      <div className="bg-white rounded-xl border border-[#E5E1F5] divide-y divide-[#E5E1F5]">
-        {loading && <div className="p-6 animate-pulse">Loading...</div>}
-        {!loading && items.length === 0 && <div className="p-12 text-center text-[#6B7280]">No notifications</div>}
+      <PageHeader title="Notifications" actions={<span className="text-sm text-[var(--color-gold)]">Mark All Read</span>} />
+      <div className="bg-[var(--color-charcoal)] rounded-xl border border-white/10 divide-y divide-white/10">
+        {loading && <div className="p-6 animate-pulse text-[var(--color-muted)]">Loading...</div>}
+        {!loading && items.length === 0 && <div className="p-12 text-center text-[var(--color-muted)]">No notifications</div>}
         {items.map((n) => (
-          <div key={n.id} className={`p-4 ${n.read ? "bg-white" : "bg-[#F8F7FF]"}`}>
-            <p className="font-medium text-[#1A1A2E]">{n.title}</p>
-            <p className="text-sm text-[#6B7280]">{n.message}</p>
-            <p className="text-xs text-[#6B7280] mt-1">{new Date(n.createdAt).toLocaleString()}</p>
+          <div key={n.id} className={`p-4 ${n.read ? "bg-transparent" : "bg-white/5"}`}>
+            <p className="font-medium text-[var(--color-ivory)]">{n.title}</p>
+            <p className="text-sm text-[var(--color-muted)]">{n.message}</p>
+            <p className="text-xs text-[var(--color-muted)] mt-1">{new Date(n.createdAt).toLocaleString()}</p>
           </div>
         ))}
       </div>

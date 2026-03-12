@@ -53,20 +53,20 @@ export function Modal({
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.3 }}
-            className={`relative w-full ${sizeMap[size]} bg-white rounded-xl shadow-xl border border-[#E5E1F5] max-h-[90vh] flex flex-col`}
+            className={`relative w-full ${sizeMap[size]} bg-[var(--color-charcoal)] rounded-xl shadow-xl border border-white/10 max-h-[90vh] flex flex-col`}
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-center justify-between px-6 py-4 border-b border-[#E5E1F5]">
-              <h2 className="text-lg font-semibold text-[#1A1A2E]">{title}</h2>
+            <div className="flex items-center justify-between px-6 py-4 border-b border-white/10">
+              <h2 className="text-lg font-semibold text-[var(--color-ivory)] font-[var(--font-display)]">{title}</h2>
               <button
                 type="button"
                 onClick={onClose}
-                className="p-1 rounded-lg text-[#6B7280] hover:bg-[#F8F7FF] hover:text-[#1A1A2E]"
+                className="p-1 rounded-xl text-[var(--color-muted)] hover:bg-white/10 hover:text-[var(--color-ivory)]"
               >
                 ×
               </button>
             </div>
-            <div className="overflow-y-auto flex-1 px-6 py-4">{children}</div>
+            <div className="overflow-y-auto flex-1 px-6 py-4 text-[var(--color-ivory)]">{children}</div>
           </motion.div>
         </div>
       )}

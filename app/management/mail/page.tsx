@@ -21,30 +21,30 @@ export default function MailPage() {
   return (
     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
       <PageHeader title="Mail" />
-      <div className="flex gap-2 mb-6 border-b border-[#E5E1F5]">
+      <div className="flex gap-2 mb-6 border-b border-white/10">
         <button
           type="button"
           onClick={() => setTab("templates")}
-          className={`px-4 py-2 text-sm font-medium ${tab === "templates" ? "text-[#7C5CBF] border-b-2 border-[#7C5CBF]" : "text-[#6B7280]"}`}
+          className={`px-4 py-2 text-sm font-medium ${tab === "templates" ? "text-[var(--color-gold)] border-b-2 border-[var(--color-gold)]" : "text-[var(--color-muted)]"}`}
         >
           Templates
         </button>
         <button
           type="button"
           onClick={() => setTab("send")}
-          className={`px-4 py-2 text-sm font-medium ${tab === "send" ? "text-[#7C5CBF] border-b-2 border-[#7C5CBF]" : "text-[#6B7280]"}`}
+          className={`px-4 py-2 text-sm font-medium ${tab === "send" ? "text-[var(--color-gold)] border-b-2 border-[var(--color-gold)]" : "text-[var(--color-muted)]"}`}
         >
           Send Mail
         </button>
       </div>
       {tab === "templates" && (
-        <div className="bg-white rounded-xl border border-[#E5E1F5] p-6">
+        <div className="bg-[var(--color-charcoal)] rounded-xl border border-white/10 p-6">
           <div className="grid gap-4 md:grid-cols-2">
             {templates.map((t) => (
-              <div key={t.event} className="p-4 border border-[#E5E1F5] rounded-lg">
-                <p className="font-medium text-[#1A1A2E]">{t.event}</p>
-                <p className="text-sm text-[#6B7280] truncate">{t.subject}</p>
-                <span className={`text-xs ${t.isActive ? "text-[#10B981]" : "text-[#6B7280]"}`}>
+              <div key={t.event} className="p-4 border border-white/10 rounded-xl">
+                <p className="font-medium text-[var(--color-ivory)]">{t.event}</p>
+                <p className="text-sm text-[var(--color-muted)] truncate">{t.subject}</p>
+                <span className={`text-xs ${t.isActive ? "text-emerald-400" : "text-[var(--color-muted)]"}`}>
                   {t.isActive ? "Active" : "Inactive"}
                 </span>
               </div>
@@ -53,8 +53,8 @@ export default function MailPage() {
         </div>
       )}
       {tab === "send" && (
-        <div className="bg-white rounded-xl border border-[#E5E1F5] p-6">
-          <p className="text-[#6B7280]">Send bulk mail form (recipients, subject, body)</p>
+        <div className="bg-[var(--color-charcoal)] rounded-xl border border-white/10 p-6">
+          <p className="text-[var(--color-muted)]">Send bulk mail form (recipients, subject, body)</p>
         </div>
       )}
     </motion.div>

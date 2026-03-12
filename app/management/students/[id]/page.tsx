@@ -26,7 +26,7 @@ export default function StudentDetailPage() {
     return (
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
         <PageHeader title="Student" />
-        <p className="text-[#6B7280]">Loading...</p>
+        <p className="text-[var(--color-muted)]">Loading...</p>
       </motion.div>
     );
   }
@@ -43,16 +43,16 @@ export default function StudentDetailPage() {
       <PageHeader
         title={name}
         subtitle={(student.regNumber as string) ?? ""}
-        actions={<Link href="/management/students" className="text-sm text-[#7C5CBF] hover:underline">← Back</Link>}
+        actions={<Link href="/management/students" className="text-sm text-[var(--color-gold)] hover:underline">← Back</Link>}
       />
-      <div className="flex gap-2 mb-6 border-b border-[#E5E1F5]">
+      <div className="flex gap-2 mb-6 border-b border-white/10">
         {(["overview", "scores", "projects", "payments"] as const).map((t) => (
           <button
             key={t}
             type="button"
             onClick={() => setTab(t)}
-            className={`px-4 py-2 text-sm font-medium rounded-t-lg ${
-              tab === t ? "bg-white border border-[#E5E1F5] border-b-0 -mb-px text-[#7C5CBF]" : "text-[#6B7280] hover:text-[#1A1A2E]"
+            className={`px-4 py-2 text-sm font-medium rounded-t-xl ${
+              tab === t ? "bg-[var(--color-charcoal)] border border-white/10 border-b-0 -mb-px text-[var(--color-gold)]" : "text-[var(--color-muted)] hover:text-[var(--color-ivory)]"
             }`}
           >
             {t.charAt(0).toUpperCase() + t.slice(1)}
@@ -60,15 +60,15 @@ export default function StudentDetailPage() {
         ))}
       </div>
       {tab === "overview" && (
-        <div className="bg-white rounded-xl border border-[#E5E1F5] p-6">
-          <p className="text-[#6B7280]">Program: {String(student.program)}</p>
-          <p className="text-[#6B7280]">Intake: {String(student.intakeYear)}</p>
-          <p className="text-[#6B7280]">Status: <StatusBadge status={String(student.enrollmentStatus)} /></p>
+        <div className="bg-[var(--color-charcoal)] rounded-xl border border-white/10 p-6">
+          <p className="text-[var(--color-muted)]">Program: {String(student.program)}</p>
+          <p className="text-[var(--color-muted)]">Intake: {String(student.intakeYear)}</p>
+          <p className="text-[var(--color-muted)]">Status: <StatusBadge status={String(student.enrollmentStatus)} /></p>
         </div>
       )}
-      {tab === "scores" && <p className="text-[#6B7280]">Scores tab – fetch /students/{id}/scores</p>}
-      {tab === "projects" && <p className="text-[#6B7280]">Projects tab – fetch /students/{id}/projects</p>}
-      {tab === "payments" && <p className="text-[#6B7280]">Payments tab – fetch /students/{id}/payments</p>}
+      {tab === "scores" && <p className="text-[var(--color-muted)]">Scores tab – fetch /students/{id}/scores</p>}
+      {tab === "projects" && <p className="text-[var(--color-muted)]">Projects tab – fetch /students/{id}/projects</p>}
+      {tab === "payments" && <p className="text-[var(--color-muted)]">Payments tab – fetch /students/{id}/payments</p>}
     </motion.div>
   );
 }

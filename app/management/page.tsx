@@ -71,7 +71,7 @@ export default function ManagementDashboardPage() {
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {Array.from({ length: 4 }).map((_, i) => (
-            <div key={i} className="h-28 bg-gray-200 rounded-xl animate-pulse" />
+            <div key={i} className="h-28 bg-[var(--color-charcoal)] rounded-xl animate-pulse border border-white/10" />
           ))}
         </div>
       </motion.div>
@@ -134,8 +134,8 @@ export default function ManagementDashboardPage() {
         />
       </div>
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <div className="bg-white rounded-xl border border-[#E5E1F5] p-5">
-          <h2 className="text-lg font-semibold text-[#1A1A2E] mb-4">
+        <div className="bg-[var(--color-charcoal)] rounded-xl border border-white/10 p-5">
+          <h2 className="text-lg font-semibold text-[var(--color-ivory)] font-[var(--font-display)] mb-4">
             Recent Admissions
           </h2>
           {data.recentAdmissions?.length ? (
@@ -143,28 +143,28 @@ export default function ManagementDashboardPage() {
               {data.recentAdmissions.slice(0, 5).map((a) => (
                 <li
                   key={a.id}
-                  className="flex items-center justify-between py-2 border-b border-[#E5E1F5] last:border-0"
+                  className="flex items-center justify-between py-2 border-b border-white/10 last:border-0"
                 >
-                  <span className="font-medium text-[#1A1A2E]">
+                  <span className="font-medium text-[var(--color-ivory)]">
                     {a.firstName} {a.lastName}
                   </span>
-                  <span className="text-sm text-[#6B7280]">{a.program}</span>
+                  <span className="text-sm text-[var(--color-muted)]">{a.program}</span>
                   <StatusBadge status={a.status} />
                 </li>
               ))}
             </ul>
           ) : (
-            <p className="text-sm text-[#6B7280]">No recent admissions</p>
+            <p className="text-sm text-[var(--color-muted)]">No recent admissions</p>
           )}
           <Link
             href="/management/admissions"
-            className="mt-4 inline-block text-sm font-medium text-[#7C5CBF] hover:underline"
+            className="mt-4 inline-block text-sm font-medium text-[var(--color-gold)] hover:underline"
           >
             View All →
           </Link>
         </div>
-        <div className="bg-white rounded-xl border border-[#E5E1F5] p-5">
-          <h2 className="text-lg font-semibold text-[#1A1A2E] mb-4">
+        <div className="bg-[var(--color-charcoal)] rounded-xl border border-white/10 p-5">
+          <h2 className="text-lg font-semibold text-[var(--color-ivory)] font-[var(--font-display)] mb-4">
             Recent Payments
           </h2>
           {data.recentPayments?.length ? (
@@ -172,10 +172,10 @@ export default function ManagementDashboardPage() {
               {data.recentPayments.slice(0, 5).map((p) => (
                 <li
                   key={p.id}
-                  className="flex items-center justify-between py-2 border-b border-[#E5E1F5] last:border-0"
+                  className="flex items-center justify-between py-2 border-b border-white/10 last:border-0"
                 >
-                  <span className="font-medium text-[#1A1A2E]">{p.name}</span>
-                  <span className="text-sm text-[#6B7280]">
+                  <span className="font-medium text-[var(--color-ivory)]">{p.name}</span>
+                  <span className="text-sm text-[var(--color-muted)]">
                     {p.amount} – {p.purpose}
                   </span>
                   <StatusBadge status={p.status} />
@@ -183,26 +183,26 @@ export default function ManagementDashboardPage() {
               ))}
             </ul>
           ) : (
-            <p className="text-sm text-[#6B7280]">No recent payments</p>
+            <p className="text-sm text-[var(--color-muted)]">No recent payments</p>
           )}
           <Link
             href="/management/payments"
-            className="mt-4 inline-block text-sm font-medium text-[#7C5CBF] hover:underline"
+            className="mt-4 inline-block text-sm font-medium text-[var(--color-gold)] hover:underline"
           >
             View All →
           </Link>
         </div>
       </div>
       {data.systemAlerts?.length ? (
-        <div className="bg-white rounded-xl border border-[#E5E1F5] p-5">
-          <h2 className="text-lg font-semibold text-[#1A1A2E] mb-4">
+        <div className="bg-[var(--color-charcoal)] rounded-xl border border-white/10 p-5">
+          <h2 className="text-lg font-semibold text-[var(--color-ivory)] font-[var(--font-display)] mb-4">
             System Alerts
           </h2>
           <div className="flex flex-wrap gap-3">
             {data.systemAlerts.map((a, i) => (
               <div
                 key={i}
-                className="px-4 py-2 rounded-lg bg-amber-50 text-amber-800 text-sm font-medium"
+                className="px-4 py-2 rounded-xl bg-amber-500/20 text-amber-400 text-sm font-medium"
               >
                 {a.message} ({a.count})
               </div>

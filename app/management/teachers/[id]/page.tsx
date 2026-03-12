@@ -26,10 +26,10 @@ export default function TeacherDetailPage() {
 
   return (
     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}>
-      <PageHeader title={name} actions={<Link href="/management/teachers" className="text-sm text-[#7C5CBF] hover:underline">← Back</Link>} />
-      <div className="bg-white rounded-xl border border-[#E5E1F5] p-6">
-        <p className="text-[#6B7280]">Email: {user?.email}</p>
-        <p className="text-[#6B7280]">Courses: {(teacher.courses as unknown[])?.length ?? 0}</p>
+      <PageHeader title={name} actions={<Link href="/management/teachers" className="text-sm text-[var(--color-gold)] hover:underline">← Back</Link>} />
+      <div className="bg-[var(--color-charcoal)] rounded-xl border border-white/10 p-6">
+        <p className="text-[var(--color-muted)]">Email: {user?.email}</p>
+        <p className="text-[var(--color-muted)]">Courses: {(teacher.courses as unknown[])?.length ?? 0}</p>
       </div>
     </motion.div>
   );

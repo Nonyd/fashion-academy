@@ -13,13 +13,13 @@ export function FormField({
 }) {
   return (
     <div className="mb-4">
-      <label className="block font-medium text-sm text-[#1A1A2E] mb-1">
+      <label className="block font-medium text-sm text-[var(--color-ivory)] mb-1">
         {label}
-        {required && <span className="text-[#EF4444]"> *</span>}
+        {required && <span className="text-red-400"> *</span>}
       </label>
       {children}
       {error && (
-        <p className="mt-1 text-sm text-[#EF4444]">{error}</p>
+        <p className="mt-1 text-sm text-red-400">{error}</p>
       )}
     </div>
   );

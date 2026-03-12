@@ -29,15 +29,15 @@ export function DataTable<T extends Record<string, unknown>>({
   emptyMessage?: string;
 }) {
   return (
-    <div className="bg-white rounded-xl border border-[#E5E1F5] overflow-hidden">
+    <div className="bg-[var(--color-charcoal)] rounded-xl border border-white/10 overflow-hidden">
       {(onSearch || actions) && (
-        <div className="p-4 border-b border-[#E5E1F5] flex items-center gap-4">
+        <div className="p-4 border-b border-white/10 flex items-center gap-4">
           {onSearch && (
             <input
               type="search"
               placeholder="Search..."
               onChange={(e) => onSearch(e.target.value)}
-              className="px-3 py-2 border border-[#E5E1F5] rounded-lg text-sm w-64 focus:ring-2 focus:ring-[#7C5CBF] focus:border-transparent"
+              className="px-3 py-2 border border-white/10 rounded-xl bg-black/30 text-[var(--color-ivory)] placeholder:text-[var(--color-muted)] text-sm w-64 focus:ring-2 focus:ring-[var(--color-gold)]/50 focus:border-[var(--color-gold)]/50 outline-none"
             />
           )}
         </div>
@@ -45,17 +45,17 @@ export function DataTable<T extends Record<string, unknown>>({
       <div className="overflow-x-auto">
         <table className="w-full">
           <thead>
-            <tr className="bg-[#F8F7FF] border-b border-[#E5E1F5]">
+            <tr className="bg-black/30 border-b border-white/10">
               {columns.map((col) => (
                 <th
                   key={col.key}
-                  className="px-4 py-3 text-left text-xs font-medium text-[#6B7280] uppercase tracking-wider"
+                  className="px-4 py-3 text-left text-xs font-medium text-[var(--color-muted)] uppercase tracking-wider"
                 >
                   {col.label}
                 </th>
               ))}
               {actions && (
-                <th className="px-4 py-3 text-right text-xs font-medium text-[#6B7280] uppercase tracking-wider">
+                <th className="px-4 py-3 text-right text-xs font-medium text-[var(--color-muted)] uppercase tracking-wider">
                   Actions
                 </th>
               )}
@@ -64,10 +64,10 @@ export function DataTable<T extends Record<string, unknown>>({
           <tbody>
             {loading ? (
               Array.from({ length: 5 }).map((_, i) => (
-                <tr key={i} className="border-b border-[#E5E1F5]">
+                <tr key={i} className="border-b border-white/10">
                   {columns.map((col) => (
                     <td key={col.key} className="px-4 py-3">
-                      <div className="h-5 bg-gray-200 rounded animate-pulse" />
+                      <div className="h-5 bg-white/10 rounded animate-pulse" />
                     </td>
                   ))}
                   {actions && <td className="px-4 py-3" />}
@@ -79,9 +79,9 @@ export function DataTable<T extends Record<string, unknown>>({
                   colSpan={columns.length + (actions ? 1 : 0)}
                   className="px-4 py-12 text-center"
                 >
-                  <Inbox className="w-12 h-12 mx-auto text-[#6B7280] mb-2" />
-                  <p className="font-medium text-[#1A1A2E]">{emptyMessage}</p>
-                  <p className="text-sm text-[#6B7280] mt-1">
+                  <Inbox className="w-12 h-12 mx-auto text-[var(--color-muted)] mb-2" />
+                  <p className="font-medium text-[var(--color-ivory)]">{emptyMessage}</p>
+                  <p className="text-sm text-[var(--color-muted)] mt-1">
                     Try adjusting your filters
                   </p>
                 </td>
@@ -90,12 +90,12 @@ export function DataTable<T extends Record<string, unknown>>({
               data.map((row, i) => (
                 <tr
                   key={i}
-                  className="border-b border-[#E5E1F5] hover:bg-[#F8F7FF]/50"
+                  className="border-b border-white/10 hover:bg-white/5 transition-colors"
                 >
                   {columns.map((col) => (
                     <td
                       key={col.key}
-                      className="px-4 py-3 text-sm text-[#1A1A2E]"
+                      className="px-4 py-3 text-sm text-[var(--color-ivory)]"
                     >
                       {col.render
                         ? col.render(row)

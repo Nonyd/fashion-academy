@@ -36,14 +36,14 @@ export default function SettingsPage() {
     <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
       <PageHeader title="Settings" />
       <div className="space-y-8">
-        <section className="bg-white rounded-xl border border-[#E5E1F5] p-6">
-          <h2 className="text-lg font-semibold text-[#1A1A2E] mb-4">Academy Info</h2>
+        <section className="bg-[var(--color-charcoal)] rounded-xl border border-white/10 p-6">
+          <h2 className="text-lg font-semibold text-[var(--color-ivory)] font-[var(--font-display)] mb-4">Academy Info</h2>
           <FormField label="Academy Name">
             <input
               type="text"
               defaultValue={settings.academy_name}
               onBlur={(e) => handleSave("academy_name", e.target.value)}
-              className="w-full px-3 py-2 border border-[#E5E1F5] rounded-lg"
+              className="w-full px-3 py-2 border border-white/10 rounded-xl bg-black/30 text-[var(--color-ivory)] focus:ring-2 focus:ring-[var(--color-gold)]/50 focus:border-[var(--color-gold)]/50 outline-none"
             />
           </FormField>
           <FormField label="Academy Email">
@@ -51,7 +51,7 @@ export default function SettingsPage() {
               type="email"
               defaultValue={settings.academy_email}
               onBlur={(e) => handleSave("academy_email", e.target.value)}
-              className="w-full px-3 py-2 border border-[#E5E1F5] rounded-lg"
+              className="w-full px-3 py-2 border border-white/10 rounded-xl bg-black/30 text-[var(--color-ivory)] focus:ring-2 focus:ring-[var(--color-gold)]/50 focus:border-[var(--color-gold)]/50 outline-none"
             />
           </FormField>
           <FormField label="Academy Phone">
@@ -59,17 +59,17 @@ export default function SettingsPage() {
               type="text"
               defaultValue={settings.academy_phone}
               onBlur={(e) => handleSave("academy_phone", e.target.value)}
-              className="w-full px-3 py-2 border border-[#E5E1F5] rounded-lg"
+              className="w-full px-3 py-2 border border-white/10 rounded-xl bg-black/30 text-[var(--color-ivory)] focus:ring-2 focus:ring-[var(--color-gold)]/50 focus:border-[var(--color-gold)]/50 outline-none"
             />
           </FormField>
         </section>
-        <section className="bg-white rounded-xl border border-[#E5E1F5] p-6">
-          <h2 className="text-lg font-semibold text-[#1A1A2E] mb-4">Admissions</h2>
+        <section className="bg-[var(--color-charcoal)] rounded-xl border border-white/10 p-6">
+          <h2 className="text-lg font-semibold text-[var(--color-ivory)] font-[var(--font-display)] mb-4">Admissions</h2>
           <FormField label="Admissions Open">
             <select
               defaultValue={settings.admissions_open}
               onChange={(e) => handleSave("admissions_open", e.target.value)}
-              className="w-full px-3 py-2 border border-[#E5E1F5] rounded-lg"
+              className="w-full px-3 py-2 border border-white/10 rounded-xl bg-black/30 text-[var(--color-ivory)] focus:ring-2 focus:ring-[var(--color-gold)]/50 outline-none"
             >
               <option value="true">Open</option>
               <option value="false">Closed</option>
@@ -80,7 +80,7 @@ export default function SettingsPage() {
               type="text"
               defaultValue={settings.current_intake}
               onBlur={(e) => handleSave("current_intake", e.target.value)}
-              className="w-full px-3 py-2 border border-[#E5E1F5] rounded-lg"
+              className="w-full px-3 py-2 border border-white/10 rounded-xl bg-black/30 text-[var(--color-ivory)] focus:ring-2 focus:ring-[var(--color-gold)]/50 focus:border-[var(--color-gold)]/50 outline-none"
             />
           </FormField>
         </section>

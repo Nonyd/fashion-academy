@@ -17,8 +17,8 @@ export function Pagination({
   const end = Math.min(page * limit, total);
 
   return (
-    <div className="flex items-center justify-between px-2 py-3">
-      <p className="text-sm text-[#6B7280]">
+    <div className="flex items-center justify-between px-2 py-3 border-t border-white/10 bg-black/20">
+      <p className="text-sm text-[var(--color-muted)]">
         Showing {start}–{end} of {total}
       </p>
       <div className="flex items-center gap-1">
@@ -26,7 +26,7 @@ export function Pagination({
           type="button"
           onClick={() => onPageChange(page - 1)}
           disabled={page <= 1}
-          className="px-3 py-1.5 rounded-lg border border-[#E5E1F5] text-sm font-medium text-[#1A1A2E] disabled:opacity-50 hover:bg-[#F8F7FF]"
+          className="px-3 py-1.5 rounded-xl border border-white/10 text-sm font-medium text-[var(--color-ivory)] disabled:opacity-50 hover:bg-white/5"
         >
           Previous
         </button>
@@ -38,10 +38,10 @@ export function Pagination({
               key={p}
               type="button"
               onClick={() => onPageChange(p)}
-              className={`w-9 h-9 rounded-lg text-sm font-medium ${
+              className={`w-9 h-9 rounded-xl text-sm font-medium transition-colors ${
                 p === page
-                  ? "bg-[#7C5CBF] text-white"
-                  : "border border-[#E5E1F5] text-[#1A1A2E] hover:bg-[#F8F7FF]"
+                  ? "bg-[var(--color-gold)] text-[var(--color-noir)]"
+                  : "border border-white/10 text-[var(--color-ivory)] hover:bg-white/5"
               }`}
             >
               {p}
@@ -52,7 +52,7 @@ export function Pagination({
           type="button"
           onClick={() => onPageChange(page + 1)}
           disabled={page >= totalPages}
-          className="px-3 py-1.5 rounded-lg border border-[#E5E1F5] text-sm font-medium text-[#1A1A2E] disabled:opacity-50 hover:bg-[#F8F7FF]"
+          className="px-3 py-1.5 rounded-xl border border-white/10 text-sm font-medium text-[var(--color-ivory)] disabled:opacity-50 hover:bg-white/5"
         >
           Next
         </button>

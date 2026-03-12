@@ -26,8 +26,8 @@ function ManagementGate({ children }: { children: React.ReactNode }) {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-[#F8F7FF]">
-        <div className="animate-pulse text-[#6B7280]">Loading...</div>
+      <div className="min-h-screen flex items-center justify-center bg-[var(--color-noir)]">
+        <div className="animate-pulse text-[var(--color-gold)]">Loading...</div>
       </div>
     );
   }
@@ -39,7 +39,7 @@ function ManagementGate({ children }: { children: React.ReactNode }) {
     <>
       <Sidebar />
       <TopHeader />
-      <main className="ml-[260px] mt-16 min-h-[calc(100vh-4rem)] bg-[#F8F7FF] p-6">
+      <main className="ml-[260px] mt-16 min-h-[calc(100vh-4rem)] bg-[var(--color-noir)] p-6 text-[var(--color-ivory)]">
         {children}
       </main>
     </>

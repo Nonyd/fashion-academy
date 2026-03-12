@@ -44,7 +44,7 @@ export default function StudentsPage() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <PageHeader title="Students" actions={<span className="text-sm text-[#6B7280]">Add Student (modal)</span>} />
+      <PageHeader title="Students" actions={<span className="text-sm text-[var(--color-muted)]">Add Student (modal)</span>} />
       <DataTable<Student>
         columns={[
           { key: "regNumber", label: "REG Number" },
@@ -58,7 +58,7 @@ export default function StudentsPage() {
         pagination={{ page, totalPages, total, limit }}
         onPageChange={setPage}
         actions={(row) => (
-          <Link href={`/management/students/${row.id}`} className="text-[#7C5CBF] hover:underline text-sm">
+          <Link href={`/management/students/${row.id}`} className="text-[var(--color-gold)] hover:underline text-sm">
             View
           </Link>
         )}

@@ -1,31 +1,37 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, GraduationCap, UserCog, LayoutDashboard } from "lucide-react";
 
-type LoginRole = "student" | "teacher" | "management";
-
-const ROLES: { id: LoginRole; label: string; icon: React.ReactNode; description: string }[] = [
+const QUICK_LOGIN_ACCOUNTS = [
+  {
+    id: "management",
+    label: "Admin",
+    description: "Management dashboard (admin@pfa.local)",
+    email: "admin@pfa.local",
+    password: "password123",
+    icon: <LayoutDashboard className="h-4 w-4" />,
+    bgClass: "bg-violet-900/60 hover:bg-violet-800/70",
+  },
   {
     id: "student",
     label: "Student",
+    description: "Student portal (student1@pfa.local)",
+    email: "student1@pfa.local",
+    password: "password123",
     icon: <GraduationCap className="h-4 w-4" />,
-    description: "Access courses, assignments & resources",
+    bgClass: "bg-emerald-900/60 hover:bg-emerald-800/70",
   },
   {
     id: "teacher",
-    label: "Teacher",
+    label: "Lecturer",
+    description: "Lecturer portal (teacher1@pfa.local)",
+    email: "teacher1@pfa.local",
+    password: "password123",
     icon: <UserCog className="h-4 w-4" />,
-    description: "Manage classes, grades & materials",
-  },
-  {
-    id: "management",
-    label: "Management",
-    icon: <LayoutDashboard className="h-4 w-4" />,
-    description: "Admin dashboard & academy oversight",
+    bgClass: "bg-sky-900/60 hover:bg-sky-800/70",
   },
 ];
 
@@ -36,7 +42,6 @@ export default function LoginPageContent({
 }: {
   onSubmit?: (email: string, password: string) => Promise<SubmitResult>;
 } = {}) {
-  const [role, setRole] = useState<LoginRole>("student");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -60,8 +65,6 @@ export default function LoginPageContent({
     }
   };
 
-  const activeRole = ROLES.find((r) => r.id === role)!;
-
   return (
     <div className="grid min-h-[calc(100vh-5rem)] lg:grid-cols-2">
       {/* Form side */}
@@ -82,43 +85,9 @@ export default function LoginPageContent({
             <h1 className="mt-2 text-3xl font-semibold tracking-tight text-[var(--color-ivory)] sm:text-4xl">
               Sign in
             </h1>
-
-            {/* Role tabs */}
-            <div className="mt-8 flex gap-1 rounded-2xl border border-white/10 bg-[var(--color-charcoal)]/80 p-1.5 backdrop-blur">
-              {ROLES.map((r) => (
-                <button
-                  key={r.id}
-                  type="button"
-                  onClick={() => setRole(r.id)}
-                  className="relative flex flex-1 items-center justify-center gap-2 rounded-xl py-3 text-xs font-medium uppercase tracking-[0.2em] text-[var(--color-ivory)]/70 transition-colors hover:text-[var(--color-ivory)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)]"
-                  aria-pressed={role === r.id}
-                  aria-label={`Sign in as ${r.label}`}
-                >
-                  {role === r.id && (
-                    <motion.span
-                      layoutId="login-role-tab"
-                      className="absolute inset-0 rounded-xl bg-[var(--color-gold)]/20 ring-1 ring-[var(--color-gold)]/40"
-                      transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
-                    />
-                  )}
-                  <span className="relative z-10 hidden sm:inline-block">{r.icon}</span>
-                  <span className="relative z-10">{r.label}</span>
-                </button>
-              ))}
-            </div>
-
-            <AnimatePresence mode="wait">
-              <motion.p
-                key={role}
-                initial={{ opacity: 0, y: 4 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -4 }}
-                transition={{ duration: 0.2 }}
-                className="mt-3 text-[11px] text-[var(--color-muted)]"
-              >
-                {activeRole.description}
-              </motion.p>
-            </AnimatePresence>
+            <p className="mt-3 text-[11px] text-[var(--color-muted)]">
+              Use your academy credentials to access your dashboard.
+            </p>
 
             <form onSubmit={handleSubmit} className="mt-8 space-y-5">
               <div>
@@ -180,9 +149,44 @@ export default function LoginPageContent({
                 disabled={isSubmitting}
                 className="w-full rounded-full bg-[var(--color-gold)] py-3.5 text-xs font-semibold uppercase tracking-[0.28em] text-[var(--color-noir)] transition-colors hover:bg-[var(--color-gold-light)] focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] disabled:opacity-70"
               >
-                {isSubmitting ? "Signing in…" : `Sign in as ${activeRole.label}`}
+                {isSubmitting ? "Signing in…" : "Sign in"}
               </button>
             </form>
+
+            {/* Quick login (demo accounts) */}
+            <div className="mt-10 rounded-2xl border border-white/10 bg-[var(--color-charcoal)]/70 p-5">
+              <p className="text-[10px] font-medium uppercase tracking-[0.35em] text-[var(--color-ivory)]/70">
+                Quick login
+              </p>
+              <p className="mt-2 text-[11px] text-[var(--color-muted)]">
+                Use pre-configured demo accounts. We&apos;ll fill in the email and password for you.
+              </p>
+              <div className="mt-4 grid gap-3 sm:grid-cols-3">
+                {QUICK_LOGIN_ACCOUNTS.map((account) => (
+                  <button
+                    key={account.id}
+                    type="button"
+                    onClick={() => {
+                      setEmail(account.email);
+                      setPassword(account.password);
+                      setSubmitError("");
+                    }}
+                    className={`flex flex-col items-start gap-2 rounded-2xl px-4 py-3 text-left text-[11px] text-[var(--color-ivory)] shadow-sm transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-gold)] ${account.bgClass}`}
+                  >
+                    <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.22em]">
+                      <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-black/30">
+                        {account.icon}
+                      </span>
+                      <span>{account.label}</span>
+                    </div>
+                    <p className="text-[10px] text-[var(--color-ivory)]/75">{account.description}</p>
+                  </button>
+                ))}
+              </div>
+              <p className="mt-3 text-[10px] text-[var(--color-muted)]">
+                Password for all demo accounts: <span className="font-semibold">password123</span>
+              </p>
+            </div>
 
             <p className="mt-8 text-center text-[11px] text-[var(--color-muted)]">
               Don&apos;t have an account?{" "}

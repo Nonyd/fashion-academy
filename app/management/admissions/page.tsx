@@ -72,7 +72,7 @@ export default function AdmissionsPage() {
           <button
             type="button"
             onClick={() => setDetailId(row.id)}
-            className="text-[#7C5CBF] hover:underline text-sm"
+            className="text-[var(--color-gold)] hover:underline text-sm"
           >
             View
           </button>
@@ -85,7 +85,7 @@ export default function AdmissionsPage() {
         title="Admission Detail"
         size="lg"
       >
-        {detailId && <p className="text-[#6B7280]">ID: {detailId}</p>}
+        {detailId && <p className="text-[var(--color-muted)]">ID: {detailId}</p>}
       </Modal>
     </motion.div>
   );

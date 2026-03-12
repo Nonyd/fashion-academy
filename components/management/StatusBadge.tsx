@@ -1,18 +1,18 @@
 "use client";
 
 const statusColors: Record<string, string> = {
-  PENDING: "bg-amber-100 text-amber-800",
-  ACCEPTED: "bg-emerald-100 text-emerald-800",
-  APPROVED: "bg-emerald-100 text-emerald-800",
-  ACTIVE: "bg-emerald-100 text-emerald-800",
-  PAID: "bg-emerald-100 text-emerald-800",
-  COMPLETED: "bg-emerald-100 text-emerald-800",
-  REJECTED: "bg-red-100 text-red-800",
-  FAILED: "bg-red-100 text-red-800",
-  INACTIVE: "bg-red-100 text-red-800",
-  WAITLISTED: "bg-orange-100 text-orange-800",
-  REVISION_REQUESTED: "bg-orange-100 text-orange-800",
-  SUBMITTED: "bg-blue-100 text-blue-800",
+  PENDING: "bg-amber-500/20 text-amber-400",
+  ACCEPTED: "bg-emerald-500/20 text-emerald-400",
+  APPROVED: "bg-emerald-500/20 text-emerald-400",
+  ACTIVE: "bg-emerald-500/20 text-emerald-400",
+  PAID: "bg-emerald-500/20 text-emerald-400",
+  COMPLETED: "bg-emerald-500/20 text-emerald-400",
+  REJECTED: "bg-red-500/20 text-red-400",
+  FAILED: "bg-red-500/20 text-red-400",
+  INACTIVE: "bg-red-500/20 text-red-400",
+  WAITLISTED: "bg-orange-500/20 text-orange-400",
+  REVISION_REQUESTED: "bg-orange-500/20 text-orange-400",
+  SUBMITTED: "bg-blue-500/20 text-blue-400",
 };
 
 export function StatusBadge({
@@ -24,7 +24,7 @@ export function StatusBadge({
 }) {
   const key = (status || "").toUpperCase();
   const className =
-    statusColors[key] ?? "bg-gray-100 text-gray-800";
+    statusColors[key] ?? "bg-white/10 text-[var(--color-muted)]";
 
   return (
     <span
