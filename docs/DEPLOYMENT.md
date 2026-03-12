@@ -43,6 +43,32 @@ ssh sonshubco@159.198.47.232 'cd /home/sonshubco/pfa && ./scripts/deploy.sh'
 
 (Replace `sonshubco` with the actual SSH user if different.)
 
+### Optional: create database and role (first-time or new server)
+
+If PostgreSQL is installed on the server but the **database and user** do not exist yet, run deploy with **CREATE_DB=1**. The script will parse `DATABASE_URL` from `.env.local` (or `.env`) and create the PostgreSQL role and database idempotently (safe to run again).
+
+**Requirements:** PostgreSQL installed, `psql` in PATH, and ability to run `sudo -u postgres psql` (so run with `sudo` if the app user cannot connect as `postgres`).
+
+```bash
+cd /home/sonshubco/pfa
+# Ensure .env.local exists with DATABASE_URL=postgresql://USER:PASSWORD@HOST:5432/DATABASE
+CREATE_DB=1 sudo ./scripts/deploy.sh
+```
+
+Or as root:
+
+```bash
+cd /home/sonshubco/pfa
+CREATE_DB=1 ./scripts/deploy.sh
+```
+
+The script will:
+
+- Create the PostgreSQL **role** (user) if it does not exist, and set its password.
+- Create the **database** if it does not exist, set owner to that user, and grant privileges.
+
+After that, normal deploys (`./scripts/deploy.sh` without `CREATE_DB`) only run `prisma db push`; they do not create the DB again.
+
 ---
 
 ## 2. Auto-deploy on Git push
