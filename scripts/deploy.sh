@@ -77,7 +77,10 @@ echo "[deploy] Applying database schema (if needed)..."
 # Prisma CLI only reads .env (not .env.local). Copy .env.local → .env so db:push sees DATABASE_URL.
 if [ -f .env.local ]; then cp .env.local .env; fi
 if [ -f .env ]; then set -a; . ./.env; set +a; fi
-npm run db:push || true
+npm run db:push || {
+  echo "[deploy] Database not reachable. Ensure PostgreSQL is running and DATABASE_URL in .env is correct."
+  echo "[deploy] Same server: sudo systemctl start postgresql   Remote: check host/port/firewall."
+}
 
 echo "[deploy] Restarting application (PM2)..."
 if command -v pm2 >/dev/null 2>&1; then
