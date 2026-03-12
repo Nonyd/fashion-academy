@@ -1,8 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
-import { BrandLogo } from "@/components/ui/BrandLogo";
 import { useManagement } from "@/context/ManagementContext";
 import {
   LayoutDashboard,
@@ -97,9 +97,29 @@ export function Sidebar() {
 
   return (
     <aside className="fixed left-0 top-0 z-30 h-full w-[260px] bg-[var(--color-charcoal)] flex flex-col border-r border-white/10">
-      <div className="p-4 border-b border-white/10">
-        <Link href="/management" className="block" aria-label="Admin dashboard home">
-          <BrandLogo variant="white" size="md" />
+      <div className="border-b border-white/10 px-4 py-4">
+        <Link
+          href="/management"
+          className="flex items-center gap-3"
+          aria-label="Admin dashboard home"
+        >
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center overflow-hidden rounded-lg">
+            <Image
+              src="/logo.png"
+              alt=""
+              width={48}
+              height={48}
+              className="h-full w-full object-contain invert"
+            />
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="text-[15px] font-bold leading-tight text-[var(--color-ivory)] font-[var(--font-display)]">
+              PFA
+            </p>
+            <p className="mt-0.5 text-[10px] font-semibold uppercase tracking-[0.22em] text-[var(--color-gold)]">
+              Admin Portal
+            </p>
+          </div>
         </Link>
       </div>
       <nav className="flex-1 overflow-y-auto p-3">
