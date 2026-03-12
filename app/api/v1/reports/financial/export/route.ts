@@ -13,13 +13,13 @@ async function handler(
     const dateFrom = url.searchParams.get("dateFrom") ?? undefined;
     const dateTo = url.searchParams.get("dateTo") ?? undefined;
     const data = await reportsService.generateFinancialReport({ dateFrom, dateTo });
-    const rows = (data.payments as { id?: string; amount?: number; purpose?: string; status?: string; provider?: string; createdAt?: string }[]).map((p) => ({
+    const rows = data.payments.map((p) => ({
       ID: p.id ?? "",
       Amount: p.amount ?? "",
       Purpose: p.purpose ?? "",
-      Status: p.status ?? "",
+      Status: String(p.status ?? ""),
       Provider: p.provider ?? "",
-      Date: p.createdAt ?? "",
+      Date: p.createdAt instanceof Date ? p.createdAt.toISOString() : String(p.createdAt ?? ""),
     }));
     const csv = reportsService.exportToCsv(rows, "financial-report.csv");
     return new Response(csv, {
