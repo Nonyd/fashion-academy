@@ -1,3 +1,5 @@
+import { Prisma } from "@prisma/client";
+import { Prisma } from "@prisma/client";
 import prisma from "@/lib/prisma";
 import { PAGINATION_DEFAULTS } from "@/lib/constants";
 
@@ -32,7 +34,10 @@ export async function updatePaymentStatus(
 ) {
   return prisma.payment.updateMany({
     where: { transactionRef },
-    data: { status: status as "PENDING" | "COMPLETED" | "FAILED" | "REFUNDED", metadata: metadata ?? undefined },
+    data: {
+      status: status as "PENDING" | "COMPLETED" | "FAILED" | "REFUNDED",
+      metadata: metadata != null ? (metadata as Prisma.InputJsonValue) : undefined,
+    },
   });
 }
 
