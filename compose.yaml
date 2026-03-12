@@ -1,0 +1,35 @@
+# PostgreSQL + pgAdmin for Fashion Academy (Podman / Docker Compose)
+# Run: podman-compose up -d   (or: podman compose -f compose.yaml up -d)
+
+services:
+  postgres:
+    image: docker.io/library/postgres:16-alpine
+    container_name: fashion-academy-db
+    environment:
+      POSTGRES_USER: fashion
+      POSTGRES_PASSWORD: fashion_dev_secret
+      POSTGRES_DB: fashion_academy
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U fashion -d fashion_academy"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  pgadmin:
+    image: docker.io/dpage/pgadmin4:latest
+    container_name: fashion-academy-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@fashion-academy.local
+      PGADMIN_DEFAULT_PASSWORD: admin
+    ports:
+      - "8080:80"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+volumes:
+  postgres_data:

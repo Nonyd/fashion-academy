@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { prisma } from "@/lib/db";
 
 export async function POST(request: Request) {
   try {
@@ -22,9 +23,30 @@ export async function POST(request: Request) {
       );
     }
 
-    // TODO: persist alumni record (DB); trigger welcome auto-email
-    return NextResponse.json({ success: true });
-  } catch {
+    const alumni = await prisma.alumni.create({
+      data: {
+        firstName,
+        lastName,
+        email,
+        phone: phone ?? null,
+        regNumber,
+        programme,
+        graduationYear: Number(graduationYear),
+        city,
+        country,
+      },
+    });
+
+    // TODO: trigger welcome auto-email
+    return NextResponse.json({ success: true, id: alumni.id });
+  } catch (e) {
+    const message = e instanceof Error ? e.message : "Invalid request";
+    if (message.includes("Unique constraint")) {
+      return NextResponse.json(
+        { error: "An alumni with this email or registration number already exists." },
+        { status: 409 }
+      );
+    }
     return NextResponse.json(
       { error: "Invalid request" },
       { status: 400 }

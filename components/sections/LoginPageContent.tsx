@@ -29,16 +29,35 @@ const ROLES: { id: LoginRole; label: string; icon: React.ReactNode; description:
   },
 ];
 
-export default function LoginPageContent() {
+type SubmitResult = { ok: boolean; error?: string };
+
+export default function LoginPageContent({
+  onSubmit: onSubmitProp,
+}: {
+  onSubmit?: (email: string, password: string) => Promise<SubmitResult>;
+} = {}) {
   const [role, setRole] = useState<LoginRole>("student");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setSubmitError("");
     setIsSubmitting(true);
-    setTimeout(() => setIsSubmitting(false), 1200);
+    try {
+      if (onSubmitProp) {
+        const result = await onSubmitProp(email, password);
+        if (!result.ok) {
+          setSubmitError(result.error ?? "Login failed");
+        }
+      } else {
+        await new Promise((r) => setTimeout(r, 1200));
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const activeRole = ROLES.find((r) => r.id === role)!;
@@ -138,6 +157,9 @@ export default function LoginPageContent() {
                   placeholder="••••••••"
                 />
               </div>
+              {submitError && (
+                <p className="text-[11px] text-red-400">{submitError}</p>
+              )}
               <div className="flex items-center justify-between text-[11px]">
                 <label className="flex cursor-pointer items-center gap-2 text-[var(--color-ivory)]/70">
                   <input
@@ -164,7 +186,7 @@ export default function LoginPageContent() {
 
             <p className="mt-8 text-center text-[11px] text-[var(--color-muted)]">
               Don&apos;t have an account?{" "}
-              <Link href="/admissions" className="text-[var(--color-gold)] hover:underline">
+              <Link href="/admissions/apply" className="text-[var(--color-gold)] hover:underline">
                 Apply to join
               </Link>
             </p>
