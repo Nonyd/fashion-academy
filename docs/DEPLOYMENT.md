@@ -114,6 +114,8 @@ cp .env.example .env.local
 nano .env.local
 ```
 
+The deploy script loads `.env.local` and `.env` before running `db:push`, so Prisma will see `DATABASE_URL`. You can use either file; keep `.env.local` out of Git.
+
 Production database: use a PostgreSQL instance (same server or remote). Run migrations after first deploy:
 
 ```bash
@@ -122,6 +124,8 @@ npm run db:seed   # optional
 ```
 
 ### 3.5 PM2 (keep app running)
+
+The deploy script restarts the app with PM2. If PM2 is not installed, the script will print instructions and continue (build still succeeds). Install PM2 once:
 
 ```bash
 sudo npm install -g pm2
