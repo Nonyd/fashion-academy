@@ -1,3 +1,4 @@
+import { EnrollmentStatus } from "@prisma/client";
 import prisma from "@/lib/prisma";
 import { PAGINATION_DEFAULTS } from "@/lib/constants";
 import type { PaginationInput } from "@/lib/validators";
@@ -75,7 +76,11 @@ export async function updateStudent(
 ) {
   return prisma.student.update({
     where: { id: studentId },
-    data,
+    data: {
+      program: data.program,
+      intakeYear: data.intakeYear,
+      enrollmentStatus: data.enrollmentStatus as EnrollmentStatus | undefined,
+    },
   });
 }
 

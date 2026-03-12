@@ -73,7 +73,6 @@ export async function findAllUsers(
       skip,
       take: limit,
       orderBy: { createdAt: "desc" },
-      include: { student: true, teacher: true, management: true },
       select: {
         id: true,
         email: true,

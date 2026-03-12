@@ -20,17 +20,22 @@ export async function uploadToCloudinary(
     return new Promise((resolve, reject) => {
       const uploadStream = cloud.uploader.upload_stream(
         { folder },
-        (err: Error | undefined, result: { secure_url: string; public_id: string; format: string; bytes: number; width?: number; height?: number }) => {
+        (err: Error | undefined, callResult: unknown) => {
           if (err) reject(err);
-          else
-            resolve({
-              url: result!.secure_url,
-              publicId: result!.public_id,
-              format: result!.format,
-              bytes: result!.bytes,
-              width: result!.width,
-              height: result!.height,
-            });
+          else {
+            const r = callResult as { secure_url?: string; public_id?: string; format?: string; bytes?: number; width?: number; height?: number } | undefined;
+            if (!r?.secure_url || !r?.public_id)
+              reject(new Error("Cloudinary upload returned no result"));
+            else
+              resolve({
+                url: r.secure_url,
+                publicId: r.public_id,
+                format: r.format ?? "",
+                bytes: r.bytes ?? 0,
+                width: r.width,
+                height: r.height,
+              });
+          }
         }
       );
       uploadStream.end(buffer);
