@@ -1,7 +1,6 @@
 import { NextRequest } from "next/server";
 import { withAuth } from "@/lib/middleware";
-import { validateQuery } from "@/lib/validators";
-import { paginationSchema } from "@/lib/validators";
+import { validateQuery, validateBody, paginationSchema } from "@/lib/validators";
 import { successResponse, paginatedResponse } from "@/lib/response";
 import { handleApiError } from "@/lib/errors";
 import * as teachersService from "@/modules/teachers/service";
