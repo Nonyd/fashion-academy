@@ -16,22 +16,35 @@ import {
   TrendingUp,
 } from "lucide-react";
 
+type DashboardStats = {
+  totalStudents: number;
+  totalTeachers: number;
+  totalCourses: number;
+  pendingAdmissions: number;
+  revenueThisMonth: number;
+  projectsPendingReview: number;
+  acceptanceRate: number;
+  totalAlumni: number;
+};
+
 type DashboardData = {
-  stats?: {
-    totalStudents: number;
-    totalTeachers: number;
-    totalCourses: number;
-    pendingAdmissions: number;
-    revenueThisMonth: number;
-    projectsPendingReview: number;
-    acceptanceRate: number;
-    totalAlumni: number;
-  };
+  stats?: DashboardStats;
   admissionFunnel?: { stage: string; count: number }[];
   revenueByMonth?: { month: string; amount: number }[];
   recentAdmissions?: { id: string; firstName: string; lastName: string; program: string; status: string; createdAt: string }[];
   recentPayments?: { id: string; name: string; amount: number; purpose: string; status: string }[];
   systemAlerts?: { type: string; message: string; count: number }[];
+};
+
+const defaultStats: DashboardStats = {
+  totalStudents: 0,
+  totalTeachers: 0,
+  totalCourses: 0,
+  pendingAdmissions: 0,
+  revenueThisMonth: 0,
+  projectsPendingReview: 0,
+  acceptanceRate: 0,
+  totalAlumni: 0,
 };
 
 export default function ManagementDashboardPage() {
@@ -65,7 +78,7 @@ export default function ManagementDashboardPage() {
     );
   }
 
-  const stats = data.stats ?? {};
+  const stats = data.stats ?? defaultStats;
 
   return (
     <motion.div
