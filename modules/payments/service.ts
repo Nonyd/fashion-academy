@@ -61,7 +61,7 @@ export async function verifyPaystack(reference: string) {
       if (payment.admissionId) {
         await prisma.admission.update({
           where: { id: payment.admissionId },
-          data: { paymentStatus: "PAID" },
+          data: { paymentStatus: "COMPLETED" },
         });
       }
       await mailService.sendTemplateToEmail("PAYMENT_CONFIRMED", payment.email, {
