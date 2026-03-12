@@ -59,8 +59,13 @@ SQLEOF
   fi
 fi
 
-echo "[deploy] Pulling latest from Git..."
-git pull origin main
+if [ -d .git ]; then
+  echo "[deploy] Pulling latest from Git..."
+  git pull origin main
+else
+  echo "[deploy] Not a git repository; skipping git pull (use existing code)."
+  echo "[deploy] To use git: mv pfa pfa.old && git clone <repo-url> pfa && cd pfa"
+fi
 
 echo "[deploy] Installing dependencies..."
 npm ci
