@@ -4,6 +4,28 @@ Server: **159.198.47.232** · Path: **/home/sonshubco/pfa** · Domain: **pfa.son
 
 ---
 
+## 0. First-time: clone the repo (if you see “not a git repository”)
+
+If `./scripts/deploy.sh` says **`fatal: not a git repository`**, the app folder was not cloned from Git. Do this once:
+
+```bash
+cd /home/sonshubco
+# If you already have a 'pfa' folder with no .git, move it aside
+mv pfa pfa.old
+# Clone the repo (use your real GitHub URL)
+git clone https://github.com/Nonyd/fashion-academy.git pfa
+cd pfa
+# Add env, make script executable, then deploy
+cp .env.example .env.local
+nano .env.local   # set DATABASE_URL, JWT_SECRET, etc.
+chmod +x scripts/deploy.sh
+./scripts/deploy.sh
+```
+
+After this, future deploys are just: `cd /home/sonshubco/pfa && ./scripts/deploy.sh`.
+
+---
+
 ## 1. One-command deploy (on server)
 
 From your server (SSH as the user that owns the app directory):

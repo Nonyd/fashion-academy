@@ -1,3 +1,4 @@
+import { ProjectStatus } from "@prisma/client";
 import prisma from "@/lib/prisma";
 import { PAGINATION_DEFAULTS } from "@/lib/constants";
 
@@ -28,7 +29,10 @@ export async function updateProject(
   return prisma.project.update({
     where: { id: projectId },
     data: {
-      ...data,
+      status: data.status as ProjectStatus | undefined,
+      teacherFeedback: data.teacherFeedback,
+      grade: data.grade,
+      reviewedById: data.reviewedById,
       reviewedAt: data.status ? new Date() : undefined,
     },
   });
