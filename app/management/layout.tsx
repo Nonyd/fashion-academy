@@ -36,13 +36,13 @@ function ManagementGate({ children }: { children: React.ReactNode }) {
   }
 
   return (
-    <>
+    <div className="min-h-screen bg-[var(--color-noir)] text-[var(--color-ivory)]">
       <Sidebar />
       <TopHeader />
-      <main className="ml-[260px] mt-16 min-h-[calc(100vh-4rem)] bg-[var(--color-noir)] p-6 text-[var(--color-ivory)]">
+      <main className="mt-16 min-h-[calc(100vh-4rem)] p-4 sm:p-6 md:ml-[260px]">
         {children}
       </main>
-    </>
+    </div>
   );
 }
 

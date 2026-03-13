@@ -96,7 +96,7 @@ export function Sidebar() {
     .slice(0, 2);
 
   return (
-    <aside className="fixed left-0 top-0 z-30 h-full w-[260px] bg-[var(--color-charcoal)] flex flex-col border-r border-white/10">
+    <aside className="fixed left-0 top-0 z-30 hidden h-full w-[260px] flex-col border-r border-white/10 bg-[var(--color-charcoal)] md:flex">
       <div className="border-b border-white/10 px-4 py-4">
         <Link
           href="/management"
@@ -112,7 +112,7 @@ export function Sidebar() {
               className="h-full w-full object-contain invert"
             />
           </div>
-          <div className="min-w-0 flex-1">
+          <div className="min-w-0">
             <p className="text-[15px] font-bold leading-tight text-[var(--color-ivory)] font-[var(--font-display)]">
               PFA
             </p>
